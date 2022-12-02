@@ -15,6 +15,15 @@ e.co.lingo
 :: Story Stylesheet [stylesheet]
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
 
+:root{
+    --green: #2bcdb5;
+  --purple: #7736db;
+  --yellow: #ffc548;
+  --pink: #fa7f98;
+  --blue: #009ef4;
+  --white: #f9f8f5;
+  --offwhite: hsla(0,0%,100%,.5)
+}
 /* GENERICS */
 html {
   box-sizing: border-box;
@@ -384,8 +393,6 @@ main.game{
    text-align: center
 }
 
-
-
 .answers > ul {
   display:flex;
   justify-content: center;
@@ -406,6 +413,162 @@ main.game{
 .correct > button{
   background-color: #58a700
 }
+
+/* GAME TWO  */
+main.game.two{flex-direction: column}
+
+.pictures-wrapper{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%
+}
+
+.pictures-item{
+  max-width: 30%
+}
+
+/* GAME THREE  */
+main.game.three{flex-direction: column;
+  justify-content: center;
+  align-items: center;}
+
+.chat-container{
+  border: solid var(--offwhite) 2px;
+      border-width: 2px;
+      border-radius: 10px;
+  width: 50%;
+        height: 300px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow:scroll
+}
+
+.message {
+  border: solid var(--offwhite) 2px;
+  width:fit-content;
+  padding: 1rem
+}
+
+.message.game{
+  border-radius: 10px 10px 10px 0;
+}
+
+.message.player{
+  border-radius: 10px 10px 0 10px ;
+align-self:flex-end
+}
+.message > p{
+  margin-bottom: 0
+}
+
+.chat-options{
+     display: flex; 
+    justify-content: space-around;
+      width: 50%;
+      gap: 1rem
+
+}
+
+.chat-options > button{
+  border-radius: 10px;
+    border: solid var(--offwhite) 2px;
+    background: transparent;
+  width:fit-content;
+  padding: 1rem;
+  text-transform: inherit;
+  box-shadow: none
+}
+
+
+
+.message.game.typing{
+  display: flex;
+  align-items: center;
+}
+
+.message.player.hide{
+  display:none
+}
+
+.message.game.typing.hide{
+  display:none
+}
+
+  .is-typing {
+         justify-content: space-around;
+         display: flex;
+      }
+
+      .jump1,
+      .jump2,
+      .jump3,
+      .jump4,
+      .jump5 {
+         width: 7px;
+         height: 7px;
+         border-radius: 100%;
+         background-color: gray;
+         margin-right: 1px
+      }
+
+      .jump1 {
+         animation: typing 1.5s linear infinite;
+         animation-delay: 0.1s;
+      }
+
+      .jump2 {
+         animation: typing 1.5s linear infinite;
+         animation-delay: 0.2s;
+      }
+
+      .jump3 {
+         animation: typing 1.5s linear infinite;
+         animation-delay: 0.3s;
+      }
+
+      .jump4 {
+         animation: typing 1.5s linear infinite;
+         animation-delay: 0.4s;
+      }
+
+      .jump5 {
+         animation: typing 1.5s linear infinite;
+         animation-delay: 0.5s;
+      }
+
+    @keyframes typing {
+     0% {
+        transform: translateY(0px);
+     }
+
+     25% {
+        transform: translateY(0px);
+     }
+
+     35% {
+        transform: translateY(15px);
+     }
+
+     45% {
+        transform: translateY(0px);
+     }
+
+     60% {
+        transform: translateY(-15px);
+     }
+
+     75% {
+          background-color: white;
+        transform: translateY(0px);
+     }
+
+     100% {
+        transform: translateY(0px);
+     }
+  }
+
 
 /* STORY INTERJECTIONS */
 main.story{
@@ -522,9 +685,9 @@ setup.checkForRepeats = (array,element) => {
 }
 
 
-:: StoryInit {"position":"100,100","size":"100,100"}
+/* :: StoryInit {"position":"100,100","size":"100,100"}
 <<cacheaudio "badjoke" "https://youhavefoundconey.net/CG/what/assets/audio/badjoke.mp3">>
-<<waitforaudio>>
+<<waitforaudio>> */
 
 
 :: headerHome {"position":"100,225","size":"100,100"}
@@ -533,9 +696,7 @@ setup.checkForRepeats = (array,element) => {
 <span>Site Language: English ></span></header>
 
 :: header {"position":"100,225","size":"100,100"}
-<header>
-<h1>e.co.lingo</h1>
-<img class="spinning globe" src="./assets/img/earth.png" alt="a cartoon globe"></header>
+<header><h1>e.co.lingo</h1><img class="spinning globe" src="./assets/img/earth.png" alt="a cartoon globe"></header>
 
 
 :: footer {"position":"100,375","size":"100,100"}
@@ -594,7 +755,7 @@ You have two options:
 :: game1b {"position":"450,50","size":"100,100"}
 <<set $passage to "game1b">>
 <<include "header">>
-<main class="game two" >
+<main class="game one" >
 <div class="dictionary"><h3>Dictionary</h3><<print $dictionary>></div>
 <div class="answers-wrapper"><h2 class="question" id="question">Which word describes the feeling you get when natural things are returned to nature?</h2>
 <div class="answers">
@@ -622,7 +783,7 @@ You have two options:
 :: game1c {"position":"450,50","size":"100,100"}
 <<set $passage to "game1c">>
 <<include "header">>
-<main class="game three" >
+<main class="game one" >
 <div class="dictionary"><h3>Dictionary</h3><<print $dictionary>></div>
 <div class="answers-wrapper"><h2 class="question" id="question">Which one of these is “Climecrime”?</h2>
 <div class="answers">
@@ -649,7 +810,7 @@ You have two options:
 :: game1d {"position":"450,50","size":"100,100"}
 <<set $passage to "game1d">>
 <<include "header">>
-<main class="game four" >
+<main class="game one" >
 <div class="dictionary"><h3>Dictionary</h3><<print $dictionary>></div>
 <div class="answers-wrapper"><h2 class="question" id="question"> Which one of these is “Naturro”?</h2>
 <div class="answers">
@@ -676,7 +837,7 @@ You have two options:
 :: game1e {"position":"450,50","size":"100,100"}
 <<set $passage to "game1e">>
 <<include "header">>
-<main class="game five" >
+<main class="game one" >
 <div class="dictionary"><h3>Dictionary</h3><<print $dictionary>></div>
 <div class="answers-wrapper"><h2 class="question" id="question"> Which word describes a beautiful view of something awful caused by climate change, like an oil spill?</h2>
 <div class="answers">
@@ -722,61 +883,383 @@ Ecocide
 <<button "Round Two">><<goto "game2a">><</button>></main>
 
 
-:: game2s {"position":"450,50","size":"100,100"}
+:: game2a {"position":"450,50","size":"100,100"}
 <<set $passage to "game2a">>
 
 <<include "header">>
-<main class="game" >
-:: SM-10 {"position":"450,850","size":"100,100"}
-<<set $passage to "SM-10">><<set $nextpassage to "SM-11">><<audio ":all" stop>><<audio "SM_10.1" play>><main>
-<div id="mount"></div>
-<div class = "dragonpictures">
-<<timed 0.1s>><<replace "#mount">><<type 60ms>>There's a temporal guide? And it's a dragon?<</type>><</replace>><</timed>>
+<main class="game two" >
+<h2 class="question" id="question"> What can you see?</h2>
+<div class="pictures-wrapper"><img class="pictures-item" src="./assets/img/1.png" alt="">
+<img class="pictures-item" src="./assets/img/2.png" alt="">
+<img class="pictures-item" src="./assets/img/3.png" alt=""></div>
+<div class="answers">
+<ul>
+<li class="answer one"><<button "Trista">> <<timed 0.2s>><<addclass ".answer.one" "correct" >> 
+<<replace "#question">>Correct! <</replace>><</timed>>
+<<timed 2.5s>><<goto "game2b">><</timed>> 
+<</button>></li>
+<li class="answer two"><<button "Groundrelief">>
+<<timed 0.2s>><<addclass ".answer.two" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+<<timed 2.5s>><<removeclass ".answer.two" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
+<</button>></li>
+<li class="answer three"><<button "Shellkin ">><<timed 0.2s>><<addclass ".answer.three" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
+<<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
+<</button>></li>
 
-<<timed 4s>><<replace "#mount">><<type 50ms>>What does it look like?
-
-
-
-<div class="menu-wrapper">
-  <div class="menu-wrapper">
-  <<link "<img src='./assets/dragon-08.png' class='dragon'>">><<audio ":all" stop>><<audio "SM_10.2" play>>
-      <<replace ".dragonpictures">>  <</replace>>
-      <<timed 0.1s>>
-          <<replace "#mount">><<type 60ms>>Holy shit, I've seen it! I thought I was crazy!<</type>><</replace>><</timed>> 
-      <<timed 4s>><<replace "#mount">><<type 50ms>>It was over there, the Tower Hill memorial in Trinity Gardens - I'll show you!
-  
-         <<button "Show map">><<set $prevpass to $passage>><<goto "SM-10map">><</button>><</type>><</replace>><</timed>>
-    <</link>>
-  
-  <<link "<img src='./assets/dragons-05.png' class='dragon'>">><<audio ":all" stop>><<audio "SM_10.2" play>>
-      <<replace ".dragonpictures">>  <</replace>>
-      <<timed 0.1s>>
-          <<replace "#mount">><<type 60ms>>Holy shit, I've seen it! I thought I was crazy!<</type>><</replace>><</timed>> 
-      <<timed 4s>><<replace "#mount">><<type 50ms>>It was over there, the Tower Hill memorial in Trinity Gardens - I'll show you!
-        
-          <<button "Show map">><<set $prevpass to $passage>><<goto "SM-10map">><</button>><</type>><</replace>><</timed>>
-    <</link>>
-    
-    <<link "<img src='./assets/dragons-06.png' class='dragon'>">><<audio ":all" stop>><<audio "SM_10.2" play>>
-      <<replace ".dragonpictures">>  <</replace>>
-      <<timed 0.1s>>
-          <<replace "#mount">><<type 60ms>>Holy shit, I've seen it! I thought I was crazy!<</type>><</replace>><</timed>> 
-      <<timed 4s>><<replace "#mount">><<type 50ms>>It was over there, the Tower Hill memorial in Trinity Gardens - I'll show you!
-  
-         <<button "Show map">><<set $prevpass to $passage>><<goto "SM-10map">><</button>><</type>><</replace>><</timed>>
-    <</link>>
+</ul>
 </div>
-<</type>><</replace>><</timed>>
-
 </div>
-
 </main>
-<<include "footer">>
-
 
 <<include "footer">>
 
 
+:: game2b {"position":"450,50","size":"100,100"}
+<<set $passage to "game2a">>
+
+<<include "header">>
+<main class="game two" >
+<h2 class="question" id="question"> What can you see?</h2>
+<div class="pictures-wrapper"><img class="pictures-item" src="./assets/img/4.png" alt="">
+<img class="pictures-item" src="./assets/img/5.png" alt="">
+<img class="pictures-item" src="./assets/img/6.png" alt=""></div>
+<div class="answers">
+<ul>
+
+<li class="answer one"><<button "F.O.M.E">>
+<<timed 0.2s>><<addclass ".answer.one" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+<<timed 2.5s>><<removeclass ".answer.one" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
+<</button>></li>
+<li class="answer two"><<button "Naturro">> <<timed 0.2s>><<addclass ".answer.two" "correct" >> 
+<<replace "#question">>Correct! <</replace>><</timed>>
+<<timed 2.5s>><<goto "game2c">><</timed>> 
+<</button>></li>
+<li class="answer three"><<button "Klibli">><<timed 0.2s>><<addclass ".answer.three" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
+<<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
+<</button>></li>
+
+</ul>
+</div>
+</div>
+</main>
+
+<<include "footer">>
+
+:: game2c {"position":"450,50","size":"100,100"}
+<<set $passage to "game2a">>
+
+<<include "header">>
+<main class="game two" >
+<h2 class="question" id="question"> What can you see?</h2>
+<div class="pictures-wrapper"><img class="pictures-item" src="./assets/img/7.png" alt="">
+<img class="pictures-item" src="./assets/img/8.png" alt="">
+<img class="pictures-item" src="./assets/img/9.png" alt=""></div>
+<div class="answers">
+<ul>
+
+<li class="answer one"><<button "Climecrime">>
+<<timed 0.2s>><<addclass ".answer.one" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+<<timed 2.5s>><<removeclass ".answer.one" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
+<</button>></li>
+<li class="answer two"><<button "Climobstinate">><<timed 0.2s>><<addclass ".answer.two" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
+<<timed 2.5s>><<removeclass ".answer.two" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
+<</button>></li>
+<li class="answer three"><<button "Klibli">> <<timed 0.2s>><<addclass ".answer.three" "correct" >> 
+<<replace "#question">>Correct! <</replace>><</timed>>
+<<timed 2.5s>><<goto "story2">><</timed>> 
+<</button>></li>
+
+</ul>
+</div>
+</div>
+</main>
+
+<<include "footer">>
+
+:: story2 {"position":"450,50","size":"100,100"}
+<<set $passage to "story1">>
+
+<main class="story">
+<div class="paperold">Two years after Professor Galston has used the word for the first time, Swedish Prime Minister Olof Palme sits down for Fika in his office. 
+
+He uses this time to reflect on his own opening speech that he has just made at the United Nations Stockholm Conference on the Human Environment.
+He had seen images of Attacks with Agent Orange—a powerful herbicide used as a chemical weapon by the US army—which killed hundreds of thousands of people and left millions of hectares of land barren in Vietnam. 
+He stood in front of 100s of people and declared the atrocities that the United States had committed in the Vietnam War as Ecocide. 
+
+The word, still not used widely, left a mark
+Reinforcing the work of others to get the word used more regularly
+Moving the word from our brain’s hippocampus to the cortex
+From a casual unconnected word to a root member of our personal dictionary. 
+He heard the word
+It was moving. 
+
+His moment is broken by a call through to his office. 
+And with it and invitation from Indira Gandhi of India and Tang Ke of China, who both suggested that the destruction of the ecosystem should be considered a crime against humanity. 
+They were starting A Working Group on Crimes Against the Environment to draft an Ecocide Convention to the United Nations. 
+He bites into his Kanelbullar and sips his espresso - the combination of cinnamon and coffee recharging him for the rest of his day. 
+Fika is over. 
+Back to work. 
+
+</div>
+<<button "Round Three">><<goto "game3a">><</button>></main>
+
+:: game3a {"position":"450,50","size":"100,100"}
+<<set $passage to "game3a">><<include "header">><main class="game three"><h2> Complete the Chat </h2>
+<div class="chat-container">
+<div class="message game"><p>Do you have any shellkins?</p></div>
+<div class="message player hide" id="player"></div>
+<div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+   </div>
+</div>
+<div class="chat-options">
+<<button "I prefer not to think about it">>
+    <<timed 0.8s>>
+      <<removeclass "#player" "hide">>
+      <<replace ".message.player">>I prefer not to think about it<</replace>>
+      <<replace ".chat-options">><</replace>>
+    <</timed>>
+<<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
+<<timed 7s>>
+  <<replace ".chat-container">>
+    <div class="message game"><p>How bad is it?</p></div>
+    <div class="message player hide" id="player"></div>
+    <div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+    </div>
+  <</replace>>
+<</timed>>
+        <<timed 9s>>
+          <<replace ".chat-options">>
+            <<button "I think some of them might be committing climecrimes">>
+              <<removeclass "#player" "hide">><<replace ".message.player">>I think some of them might be committing climecrimes<</replace>>
+              <<replace ".chat-options">><</replace>>
+              <<timed 4s>><<goto "game3b">><</timed>>
+            <</button>>
+
+            <<button "Not terrible, they're just climobsinate">>
+              <<removeclass "#player" "hide">>
+              <<replace ".message.player">>Not terrible, they're just climobsinate<</replace>>
+              <<replace ".chat-options">><</replace>>
+              <<timed 4s>><<goto "game3b">><</timed>>
+            <</button>>
+          <</replace>>
+        <</timed>>
+<</button>>
+
+<<button "Yes,definitely">>
+  <<timed 0.8s>>
+    <<removeclass "#player" "hide">>
+    <<replace ".message.player">>Yes,definitely<</replace>>
+    <<replace ".chat-options">><</replace>>
+  <</timed>>
+  <<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
+  <<timed 7s>>
+    <<replace ".chat-container">>
+      <div class="message game"><p>Do you talk to them about it?</p></div>
+  <div class="message player hide" id="player"></div>
+  <div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+  </div>
+      <</replace>>
+  <</timed>>
+<<timed 9s>><<replace ".chat-options">>
+    <<button "Yes they're so climbostinate">>
+        <<timed 0.8s>>
+            <<removeclass "#player" "hide">>
+            <<replace ".message.player">>Yes they're so climbostinate<</replace>>
+            <<replace ".chat-options">><</replace>>
+        <</timed>>
+    <<timed 3s>><<goto "game3b">><</timed>>
+    <</button>>
+
+    <<button "They do understand, they just won't change their behaviour">>
+      <<timed 0.8s>>
+        <<removeclass "#player" "hide">>
+        <<replace ".message.player">>They do understand, they just won't change their behaviour<</replace>>
+        <<replace ".chat-options">><</replace>>
+      <</timed>>
+          <<timed 3s>><<goto "game3b">><</timed>>
+    <</button>>
+    <</replace>><</timed>>
+
+    <</button>>
+</div>
+</main>
+
+<<include "footer">>
+
+
+:: game3b {"position":"450,50","size":"100,100"}
+<<set $passage to "game3b">><<include "header">><main class="game three"><h2> Complete the Chat </h2>
+<div class="chat-container">
+<div class="message game"><p>Have you had any klibi recently?</p></div>
+<div class="message player hide" id="player"></div>
+<div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+   </div>
+</div>
+<div class="chat-options">
+    <<button "Yes, I went to a city farm, I got lots of klibi from all the homegrown vegetables">>
+      <<timed 0.8s>>
+        <<removeclass "#player" "hide">>
+        <<replace ".message.player">>Yes, I went to a city farm, I got lots of klibi from all the homegrown vegetables<</replace>>
+        <<replace ".chat-options">><</replace>>
+      <</timed>>
+      <<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
+      <<timed 7s>>
+        <<replace ".chat-container">>
+        <div class="message game"><p>Did you eat any of the vegetables?</p></div>
+        <div class="message player hide" id="player"></div>
+        <div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+    </div>
+        <</replace>>
+    <</timed>>
+    <<timed 9s>><<replace ".chat-options">>
+        <<button "No, but just being there, I felt so calm">>
+          <<timed 0.8s>>
+            <<removeclass "#player" "hide">>
+            <<replace ".message.player">>No, but just being there, I felt so calm<</replace>>
+            <<replace ".chat-options">><</replace>><</timed>>
+          <<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
+          <<timed 7s>>
+            <<replace ".chat-container">>
+              <div class="message game"><p>Naturro?</p></div>
+              <div class="message player hide" id="player"></div>
+              <div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+            </div>
+            <</replace>>
+          <</timed>>
+          <<timed 9s>>
+              <<replace ".chat-options">>
+                <<button "Exactly">>
+                <<timed 0.8s>>
+                    <<removeclass "#player" "hide">>
+                    <<replace ".message.player">>Exactly<</replace>>
+                        <<replace ".chat-options">><</replace>>
+                    <</timed>>
+                        <<timed 4s>><<goto "game3c">><</timed>>
+                <</button>>
+                  <<button "Not quite">>
+                    <<timed 0.8s>>
+                    <<removeclass "#player" "hide">>
+                    <<replace ".message.player">>Not quite<</replace>>
+                        <<replace ".chat-options">><</replace>>
+                    <</timed>>
+                        <<timed 4s>><<goto "game3c">><</timed>>
+                <</button>>
+            
+              <</replace>>
+          <</timed>>
+    <</button>>
+
+    <<button "Yes, a potato">><</button>>
+        <</replace>>
+      <</timed>><</button>>
+
+
+<<button "I find it hard to feel klibi. I feel quite overwhelmed by my F.O.M.E">>
+
+<<timed 0.8s>><<removeclass "#player" "hide">><<replace ".message.player">>I find it hard to feel klibi. I feel quite overwhelmed by my F.O.M.E<</replace>><<replace ".chat-options">><</replace>><</timed>>
+<<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
+<<timed 7s>><<replace ".chat-container">><div class="message game"><p>Have you tried Naturro as a way to help?</p></div>
+<div class="message player hide" id="player"></div>
+<div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+</div>
+<</replace>><</timed>>
+<<timed 9s>><<replace ".chat-options">><<button "That's a good idea. What would you suggest?">>
+ <<timed 0.8s>>
+            <<removeclass "#player" "hide">>
+            <<replace ".message.player">>That's a good idea. What would you suggest?<</replace>>
+            <<replace ".chat-options">><</replace>><</timed>>
+          <<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
+          <<timed 7s>>
+            <<replace ".chat-container">>
+              <div class="message game"><p>A walk by the sea or forest? </p></div>
+              <div class="message player hide" id="player"></div>
+              <div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+            </div>
+            <</replace>>
+          <</timed>>
+          <<timed 9s>>
+              <<replace ".chat-options">>
+                <<button "I'll give it a go">>
+                <<timed 0.8s>>
+                    <<removeclass "#player" "hide">>
+                    <<replace ".message.player">>I'll give it a go<</replace>>
+                        <<replace ".chat-options">><</replace>>
+                    <</timed>>
+                        <<timed 4s>><<goto "game3c">><</timed>>
+                <</button>>
+                  <<button "Hmm maybe">>
+                    <<timed 0.8s>>
+                    <<removeclass "#player" "hide">>
+                    <<replace ".message.player">>Hmm maybe<</replace>>
+                        <<replace ".chat-options">><</replace>>
+                    <</timed>>
+                        <<timed 4s>><<goto "game3c">><</timed>>
+                <</button>>
+            
+              <</replace>>
+          <</timed>>
+<</button>>
+<<button "I'm not sure">>
+<<timed 0.8s>>
+            <<removeclass "#player" "hide">>
+            <<replace ".message.player">>I'm not sure<</replace>>
+            <<replace ".chat-options">><</replace>><</timed>>
+          <<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
+          <<timed 7s>>
+            <<replace ".chat-container">>
+              <div class="message game"><p>Sometimes you see groundrelief and it can be very calming </p></div>
+              <div class="message player hide" id="player"></div>
+              <div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+            </div>
+            <</replace>>
+          <</timed>>
+          <<timed 9s>>
+              <<replace ".chat-options">>
+                <<button "I'll give it a go">>
+                <<timed 0.8s>>
+                    <<removeclass "#player" "hide">>
+                    <<replace ".message.player">>I'll give it a go<</replace>>
+                        <<replace ".chat-options">><</replace>>
+                    <</timed>>
+                        <<timed 4s>><<goto "game3c">><</timed>>
+                <</button>>
+                  <<button "Hmm maybe">>
+                    <<timed 0.8s>>
+                    <<removeclass "#player" "hide">>
+                    <<replace ".message.player">>Hmm maybe<</replace>>
+                        <<replace ".chat-options">><</replace>>
+                    <</timed>>
+                        <<timed 4s>><<goto "game3c">><</timed>>
+                <</button>>
+            
+              <</replace>>
+          <</timed>>
+<</button>><</replace>><</timed>>
+<</button>></div>
+<<button "back">><<goto "game3a">><</button>>
+</main>
+
+<<include "footer">>
+
+
+:: story3 {"position":"450,50","size":"100,100"}
+<<set $passage to "story1">>
+
+<main class="story">
+<div class="paperold">Polly Higgins knows she is reaching the end of her life. The doctors have told her it won’t be long and she should prepare. 
+She is only reaching half a decade of life on this planet but as she reflects on that time she realises it was time well spent, as an Earth Protector. 
+She remembers the moment her life changed. As a barrister, after a three-year laborious case representing a person who had been injured at work, she looked out the window at the Court of Appeal and thought "The earth is being injured and harmed as well and nothing is being done about it…the earth is in need of a good lawyer"
+This moment shifted her and she began her life’s work, a campaign to make ecocide a crime. 
+She spent her last decade making the word “ecocide” globally understood by giving talks, making documentaries and advising governments. Along the way she inspired thousands, from parliamentarians to ecologists and from lawyers to artists. She devoted all her time and unquenchable spirit to one client - the Earth.
+She looked up at the picture on her wall. 
+Prime position in her house
+A proud moment in a life full of striving for change. 
+She presents a definition of ecocide to the UN Law Commission in 2010: Ecocide is extensive loss, damage or destruction of ecosystems of a given territory(ies)… such that the peaceful enjoyment of the inhabitants has been or will be severely diminished. 
+Six months after her life ended, It was this definition that Pope Francis referred to in his call for ecocide to become a crime.
+
+
+</div>
+<<button "Round Three">><<goto "game3a">><</button>></main>
 
 :: options {"position":"450,50","size":"100,100"}
 <<set $passage to "options">>
@@ -847,7 +1330,7 @@ which is codeword:
 <<include "footer">>
 
 
-:: buttonchoice {"position":"450,2150","size":"100,100"}
+/* :: buttonchoice {"position":"450,2150","size":"100,100"}
 <<set $passage to "buttonchoice">>
 <<include "header">>
 <main>
@@ -857,7 +1340,7 @@ which is codeword:
   <<timed 3s>><div class="door-item"><span>DOOR B</span><<button [img["https://youhavefoundconey.net/CG/what/assets/img/door-white.png"][Door B]]>><<set $doorchoice to "B">><<set $prevpass to $passage>><<goto "doorB">><</button>></div><</timed>>
   </div>
 </main>
-<<include "footer">>
+<<include "footer">> */
 
 
 :: doorA {"position":"625,2175","size":"100,100"}

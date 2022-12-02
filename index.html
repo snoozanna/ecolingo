@@ -98,8 +98,17 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<!-- UUID://F9E39354-F641-4070-8B45-C310A3FDC8C8// --><tw-storydata name="e.co.lingo" startnode="6" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="F9E39354-F641-4070-8B45-C310A3FDC8C8" zoom="0.6" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+	<!-- UUID://F9E39354-F641-4070-8B45-C310A3FDC8C8// --><tw-storydata name="e.co.lingo" startnode="5" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="F9E39354-F641-4070-8B45-C310A3FDC8C8" zoom="0.6" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
 
+:root{
+    --green: #2bcdb5;
+  --purple: #7736db;
+  --yellow: #ffc548;
+  --pink: #fa7f98;
+  --blue: #009ef4;
+  --white: #f9f8f5;
+  --offwhite: hsla(0,0%,100%,.5)
+}
 /* GENERICS */
 html {
   box-sizing: border-box;
@@ -469,8 +478,6 @@ main.game{
    text-align: center
 }
 
-
-
 .answers > ul {
   display:flex;
   justify-content: center;
@@ -491,6 +498,162 @@ main.game{
 .correct > button{
   background-color: #58a700
 }
+
+/* GAME TWO  */
+main.game.two{flex-direction: column}
+
+.pictures-wrapper{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%
+}
+
+.pictures-item{
+  max-width: 30%
+}
+
+/* GAME THREE  */
+main.game.three{flex-direction: column;
+  justify-content: center;
+  align-items: center;}
+
+.chat-container{
+  border: solid var(--offwhite) 2px;
+      border-width: 2px;
+      border-radius: 10px;
+  width: 50%;
+        height: 300px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  overflow:scroll
+}
+
+.message {
+  border: solid var(--offwhite) 2px;
+  width:fit-content;
+  padding: 1rem
+}
+
+.message.game{
+  border-radius: 10px 10px 10px 0;
+}
+
+.message.player{
+  border-radius: 10px 10px 0 10px ;
+align-self:flex-end
+}
+.message > p{
+  margin-bottom: 0
+}
+
+.chat-options{
+     display: flex; 
+    justify-content: space-around;
+      width: 50%;
+      gap: 1rem
+
+}
+
+.chat-options > button{
+  border-radius: 10px;
+    border: solid var(--offwhite) 2px;
+    background: transparent;
+  width:fit-content;
+  padding: 1rem;
+  text-transform: inherit;
+  box-shadow: none
+}
+
+
+
+.message.game.typing{
+  display: flex;
+  align-items: center;
+}
+
+.message.player.hide{
+  display:none
+}
+
+.message.game.typing.hide{
+  display:none
+}
+
+  .is-typing {
+         justify-content: space-around;
+         display: flex;
+      }
+
+      .jump1,
+      .jump2,
+      .jump3,
+      .jump4,
+      .jump5 {
+         width: 7px;
+         height: 7px;
+         border-radius: 100%;
+         background-color: gray;
+         margin-right: 1px
+      }
+
+      .jump1 {
+         animation: typing 1.5s linear infinite;
+         animation-delay: 0.1s;
+      }
+
+      .jump2 {
+         animation: typing 1.5s linear infinite;
+         animation-delay: 0.2s;
+      }
+
+      .jump3 {
+         animation: typing 1.5s linear infinite;
+         animation-delay: 0.3s;
+      }
+
+      .jump4 {
+         animation: typing 1.5s linear infinite;
+         animation-delay: 0.4s;
+      }
+
+      .jump5 {
+         animation: typing 1.5s linear infinite;
+         animation-delay: 0.5s;
+      }
+
+    @keyframes typing {
+     0% {
+        transform: translateY(0px);
+     }
+
+     25% {
+        transform: translateY(0px);
+     }
+
+     35% {
+        transform: translateY(15px);
+     }
+
+     45% {
+        transform: translateY(0px);
+     }
+
+     60% {
+        transform: translateY(-15px);
+     }
+
+     75% {
+          background-color: white;
+        transform: translateY(0px);
+     }
+
+     100% {
+        transform: translateY(0px);
+     }
+  }
+
 
 /* STORY INTERJECTIONS */
 main.story{
@@ -601,12 +764,14 @@ setup.checkForRepeats = (array,element) => {
  const arrayCopy = [...array];
  const duplicates = arrayCopy.filter((item, index) => index !== arrayCopy.indexOf(item));
  return duplicates.contains(element)
-}</script><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;badjoke&quot; &quot;https://youhavefoundconey.net/CG/what/assets/audio/badjoke.mp3&quot;&gt;&gt;
-&lt;&lt;waitforaudio&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="headerHome" tags="" position="100,225" size="100,100">&lt;header&gt;
+}
+
+
+/* :: StoryInit {"position":"100,100","size":"100,100"}
+<<cacheaudio "badjoke" "https://youhavefoundconey.net/CG/what/assets/audio/badjoke.mp3">>
+<<waitforaudio>> */</script><tw-passagedata pid="1" name="headerHome" tags="" position="100,225" size="100,100">&lt;header&gt;
 &lt;h1&gt;e.co.lingo&lt;/h1&gt;
-&lt;span&gt;Site Language: English &gt;&lt;/span&gt;&lt;/header&gt;</tw-passagedata><tw-passagedata pid="3" name="header" tags="" position="100,225" size="100,100">&lt;header&gt;
-&lt;h1&gt;e.co.lingo&lt;/h1&gt;
-&lt;img class=&quot;spinning globe&quot; src=&quot;./assets/img/earth.png&quot; alt=&quot;a cartoon globe&quot;&gt;&lt;/header&gt;</tw-passagedata><tw-passagedata pid="4" name="footer" tags="" position="100,375" size="100,100">&lt;footer&gt;&lt;div&gt;&lt;/div&gt;&lt;div class=&quot;nav-wrapper &quot;&gt;&lt;span&gt;1&lt;/span&gt;2&lt;span&gt;&lt;/span&gt;&lt;span&gt;3&lt;/span&gt;&lt;span&gt;4&lt;/span&gt;&lt;/div&gt;&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="5" name="lost" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;lost&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;span&gt;Site Language: English &gt;&lt;/span&gt;&lt;/header&gt;</tw-passagedata><tw-passagedata pid="2" name="header" tags="" position="100,225" size="100,100">&lt;header&gt;&lt;h1&gt;e.co.lingo&lt;/h1&gt;&lt;img class=&quot;spinning globe&quot; src=&quot;./assets/img/earth.png&quot; alt=&quot;a cartoon globe&quot;&gt;&lt;/header&gt;</tw-passagedata><tw-passagedata pid="3" name="footer" tags="" position="100,375" size="100,100">&lt;footer&gt;&lt;div&gt;&lt;/div&gt;&lt;div class=&quot;nav-wrapper &quot;&gt;&lt;span&gt;1&lt;/span&gt;2&lt;span&gt;&lt;/span&gt;&lt;span&gt;3&lt;/span&gt;&lt;span&gt;4&lt;/span&gt;&lt;/div&gt;&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="4" name="lost" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;lost&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 Sorry to hear that you&#39;re lost! 
 You have two options:
@@ -615,7 +780,7 @@ You have two options:
 
 &lt;&lt;button &quot;Take me straight to the end location!&quot;&gt;&gt;&lt;&lt;goto &quot;end&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="landing" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="landing" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
 &lt;&lt;include &quot;headerHome&quot;&gt;&gt;
 &lt;main class=&quot;landing&quot;&gt;
 &lt;div class=&quot;landing-item&quot;&gt;&lt;img class=&quot;hero&quot; src=&quot;./assets/img/earth.png&quot; alt=&quot;a cartoon globe&quot;&gt;&lt;/div&gt;
@@ -623,7 +788,7 @@ You have two options:
     &lt;p class=&quot;tagline&quot;&gt;A fun, free and effective way to learn a climate language &lt;/p&gt;
     &lt;&lt;button &quot;Get Started&quot;&gt;&gt;&lt;&lt;goto &quot;game1a&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
  &lt;/div&gt;
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="7" name="game1a" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game1a&quot;&gt;&gt;
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="6" name="game1a" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game1a&quot;&gt;&gt;
 &lt;&lt;set $dictionary to []&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
@@ -645,9 +810,9 @@ You have two options:
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="game1b" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game1b&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="game1b" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game1b&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
-&lt;main class=&quot;game two&quot; &gt;
+&lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;dictionary&quot;&gt;&lt;h3&gt;Dictionary&lt;/h3&gt;&lt;&lt;print $dictionary&gt;&gt;&lt;/div&gt;
 &lt;div class=&quot;answers-wrapper&quot;&gt;&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt;Which word describes the feeling you get when natural things are returned to nature?&lt;/h2&gt;
 &lt;div class=&quot;answers&quot;&gt;
@@ -669,9 +834,9 @@ You have two options:
 &lt;/div&gt;
 &lt;/main&gt;
 &lt;&lt;include &quot;footer&quot;&gt;&gt;
-&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game1b&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="game1c" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game1c&quot;&gt;&gt;
+&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game1b&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="game1c" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game1c&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
-&lt;main class=&quot;game three&quot; &gt;
+&lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;dictionary&quot;&gt;&lt;h3&gt;Dictionary&lt;/h3&gt;&lt;&lt;print $dictionary&gt;&gt;&lt;/div&gt;
 &lt;div class=&quot;answers-wrapper&quot;&gt;&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt;Which one of these is “Climecrime”?&lt;/h2&gt;
 &lt;div class=&quot;answers&quot;&gt;
@@ -693,9 +858,9 @@ You have two options:
 &lt;/div&gt;
 &lt;/main&gt;
 &lt;&lt;include &quot;footer&quot;&gt;&gt;
-&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game1b&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="game1d" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game1d&quot;&gt;&gt;
+&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game1b&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="game1d" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game1d&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
-&lt;main class=&quot;game four&quot; &gt;
+&lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;dictionary&quot;&gt;&lt;h3&gt;Dictionary&lt;/h3&gt;&lt;&lt;print $dictionary&gt;&gt;&lt;/div&gt;
 &lt;div class=&quot;answers-wrapper&quot;&gt;&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; Which one of these is “Naturro”?&lt;/h2&gt;
 &lt;div class=&quot;answers&quot;&gt;
@@ -717,9 +882,9 @@ You have two options:
 &lt;/div&gt;
 &lt;/main&gt;
 &lt;&lt;include &quot;footer&quot;&gt;&gt;
-&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game1c&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="game1e" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game1e&quot;&gt;&gt;
+&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game1c&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="game1e" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game1e&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
-&lt;main class=&quot;game five&quot; &gt;
+&lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;dictionary&quot;&gt;&lt;h3&gt;Dictionary&lt;/h3&gt;&lt;&lt;print $dictionary&gt;&gt;&lt;/div&gt;
 &lt;div class=&quot;answers-wrapper&quot;&gt;&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; Which word describes a beautiful view of something awful caused by climate change, like an oil spill?&lt;/h2&gt;
 &lt;div class=&quot;answers&quot;&gt;
@@ -742,7 +907,7 @@ You have two options:
 &lt;/div&gt;
 &lt;/main&gt;
 &lt;&lt;include &quot;footer&quot;&gt;&gt;
-&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game1d&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="story1" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;story1&quot;&gt;&gt;
+&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game1d&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="story1" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;story1&quot;&gt;&gt;
 
 &lt;main class=&quot;story&quot;&gt;
 &lt;div class=&quot;paperold&quot;&gt;Professor Arthur W. Galston stands in the dark sidelines of the stage, out in the light he’ll be delivering the biggest speech of his career. 
@@ -758,56 +923,361 @@ A word he will utter for the first time in public.
 A word he hopes has the power to spark change. 
 Ecocide
 &lt;/div&gt;
-&lt;&lt;button &quot;Round Two&quot;&gt;&gt;&lt;&lt;goto &quot;game2a&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="13" name="game2s" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game2a&quot;&gt;&gt;
+&lt;&lt;button &quot;Round Two&quot;&gt;&gt;&lt;&lt;goto &quot;game2a&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="12" name="game2a" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game2a&quot;&gt;&gt;
 
 &lt;&lt;include &quot;header&quot;&gt;&gt;
-&lt;main class=&quot;game&quot; &gt;</tw-passagedata><tw-passagedata pid="14" name="SM-10" tags="" position="450,850" size="100,100">&lt;&lt;set $passage to &quot;SM-10&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SM-11&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;SM_10.1&quot; play&gt;&gt;&lt;main&gt;
-&lt;div id=&quot;mount&quot;&gt;&lt;/div&gt;
-&lt;div class = &quot;dragonpictures&quot;&gt;
-&lt;&lt;timed 0.1s&gt;&gt;&lt;&lt;replace &quot;#mount&quot;&gt;&gt;&lt;&lt;type 60ms&gt;&gt;There&#39;s a temporal guide? And it&#39;s a dragon?&lt;&lt;/type&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;main class=&quot;game two&quot; &gt;
+&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; What can you see?&lt;/h2&gt;
+&lt;div class=&quot;pictures-wrapper&quot;&gt;&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/1.png&quot; alt=&quot;&quot;&gt;
+&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/2.png&quot; alt=&quot;&quot;&gt;
+&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/3.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;answers&quot;&gt;
+&lt;ul&gt;
+&lt;li class=&quot;answer one&quot;&gt;&lt;&lt;button &quot;Trista&quot;&gt;&gt; &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.one&quot; &quot;correct&quot; &gt;&gt; 
+&lt;&lt;replace &quot;#question&quot;&gt;&gt;Correct! &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;goto &quot;game2b&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt; 
+&lt;&lt;/button&gt;&gt;&lt;/li&gt;
+&lt;li class=&quot;answer two&quot;&gt;&lt;&lt;button &quot;Groundrelief&quot;&gt;&gt;
+&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;/li&gt;
+&lt;li class=&quot;answer three&quot;&gt;&lt;&lt;button &quot;Shellkin &quot;&gt;&gt;&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt;&lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt; &lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;/li&gt;
 
-&lt;&lt;timed 4s&gt;&gt;&lt;&lt;replace &quot;#mount&quot;&gt;&gt;&lt;&lt;type 50ms&gt;&gt;What does it look like?
-
-
-
-&lt;div class=&quot;menu-wrapper&quot;&gt;
-  &lt;div class=&quot;menu-wrapper&quot;&gt;
-  &lt;&lt;link &quot;&lt;img src=&#39;./assets/dragon-08.png&#39; class=&#39;dragon&#39;&gt;&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;SM_10.2&quot; play&gt;&gt;
-      &lt;&lt;replace &quot;.dragonpictures&quot;&gt;&gt;  &lt;&lt;/replace&gt;&gt;
-      &lt;&lt;timed 0.1s&gt;&gt;
-          &lt;&lt;replace &quot;#mount&quot;&gt;&gt;&lt;&lt;type 60ms&gt;&gt;Holy shit, I&#39;ve seen it! I thought I was crazy!&lt;&lt;/type&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt; 
-      &lt;&lt;timed 4s&gt;&gt;&lt;&lt;replace &quot;#mount&quot;&gt;&gt;&lt;&lt;type 50ms&gt;&gt;It was over there, the Tower Hill memorial in Trinity Gardens - I&#39;ll show you!
-  
-         &lt;&lt;button &quot;Show map&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;SM-10map&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/type&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-    &lt;&lt;/link&gt;&gt;
-  
-  &lt;&lt;link &quot;&lt;img src=&#39;./assets/dragons-05.png&#39; class=&#39;dragon&#39;&gt;&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;SM_10.2&quot; play&gt;&gt;
-      &lt;&lt;replace &quot;.dragonpictures&quot;&gt;&gt;  &lt;&lt;/replace&gt;&gt;
-      &lt;&lt;timed 0.1s&gt;&gt;
-          &lt;&lt;replace &quot;#mount&quot;&gt;&gt;&lt;&lt;type 60ms&gt;&gt;Holy shit, I&#39;ve seen it! I thought I was crazy!&lt;&lt;/type&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt; 
-      &lt;&lt;timed 4s&gt;&gt;&lt;&lt;replace &quot;#mount&quot;&gt;&gt;&lt;&lt;type 50ms&gt;&gt;It was over there, the Tower Hill memorial in Trinity Gardens - I&#39;ll show you!
-        
-          &lt;&lt;button &quot;Show map&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;SM-10map&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/type&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-    &lt;&lt;/link&gt;&gt;
-    
-    &lt;&lt;link &quot;&lt;img src=&#39;./assets/dragons-06.png&#39; class=&#39;dragon&#39;&gt;&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;SM_10.2&quot; play&gt;&gt;
-      &lt;&lt;replace &quot;.dragonpictures&quot;&gt;&gt;  &lt;&lt;/replace&gt;&gt;
-      &lt;&lt;timed 0.1s&gt;&gt;
-          &lt;&lt;replace &quot;#mount&quot;&gt;&gt;&lt;&lt;type 60ms&gt;&gt;Holy shit, I&#39;ve seen it! I thought I was crazy!&lt;&lt;/type&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt; 
-      &lt;&lt;timed 4s&gt;&gt;&lt;&lt;replace &quot;#mount&quot;&gt;&gt;&lt;&lt;type 50ms&gt;&gt;It was over there, the Tower Hill memorial in Trinity Gardens - I&#39;ll show you!
-  
-         &lt;&lt;button &quot;Show map&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;SM-10map&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;&lt;/type&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-    &lt;&lt;/link&gt;&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
-&lt;&lt;/type&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-
 &lt;/div&gt;
-
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;
+
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="game2b" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game2a&quot;&gt;&gt;
+
+&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;main class=&quot;game two&quot; &gt;
+&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; What can you see?&lt;/h2&gt;
+&lt;div class=&quot;pictures-wrapper&quot;&gt;&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/4.png&quot; alt=&quot;&quot;&gt;
+&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/5.png&quot; alt=&quot;&quot;&gt;
+&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/6.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;answers&quot;&gt;
+&lt;ul&gt;
+
+&lt;li class=&quot;answer one&quot;&gt;&lt;&lt;button &quot;F.O.M.E&quot;&gt;&gt;
+&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.one&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.one&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;/li&gt;
+&lt;li class=&quot;answer two&quot;&gt;&lt;&lt;button &quot;Naturro&quot;&gt;&gt; &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.two&quot; &quot;correct&quot; &gt;&gt; 
+&lt;&lt;replace &quot;#question&quot;&gt;&gt;Correct! &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;goto &quot;game2c&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt; 
+&lt;&lt;/button&gt;&gt;&lt;/li&gt;
+&lt;li class=&quot;answer three&quot;&gt;&lt;&lt;button &quot;Klibli&quot;&gt;&gt;&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt;&lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt; &lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/main&gt;
+
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="game2c" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game2a&quot;&gt;&gt;
+
+&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;main class=&quot;game two&quot; &gt;
+&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; What can you see?&lt;/h2&gt;
+&lt;div class=&quot;pictures-wrapper&quot;&gt;&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/7.png&quot; alt=&quot;&quot;&gt;
+&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/8.png&quot; alt=&quot;&quot;&gt;
+&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/9.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;answers&quot;&gt;
+&lt;ul&gt;
+
+&lt;li class=&quot;answer one&quot;&gt;&lt;&lt;button &quot;Climecrime&quot;&gt;&gt;
+&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.one&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.one&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;/li&gt;
+&lt;li class=&quot;answer two&quot;&gt;&lt;&lt;button &quot;Climobstinate&quot;&gt;&gt;&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt;&lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt; &lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;/li&gt;
+&lt;li class=&quot;answer three&quot;&gt;&lt;&lt;button &quot;Klibli&quot;&gt;&gt; &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.three&quot; &quot;correct&quot; &gt;&gt; 
+&lt;&lt;replace &quot;#question&quot;&gt;&gt;Correct! &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;goto &quot;story2&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt; 
+&lt;&lt;/button&gt;&gt;&lt;/li&gt;
+
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/main&gt;
+
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="story2" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;story1&quot;&gt;&gt;
+
+&lt;main class=&quot;story&quot;&gt;
+&lt;div class=&quot;paperold&quot;&gt;Two years after Professor Galston has used the word for the first time, Swedish Prime Minister Olof Palme sits down for Fika in his office. 
+
+He uses this time to reflect on his own opening speech that he has just made at the United Nations Stockholm Conference on the Human Environment.
+He had seen images of Attacks with Agent Orange—a powerful herbicide used as a chemical weapon by the US army—which killed hundreds of thousands of people and left millions of hectares of land barren in Vietnam. 
+He stood in front of 100s of people and declared the atrocities that the United States had committed in the Vietnam War as Ecocide. 
+
+The word, still not used widely, left a mark
+Reinforcing the work of others to get the word used more regularly
+Moving the word from our brain’s hippocampus to the cortex
+From a casual unconnected word to a root member of our personal dictionary. 
+He heard the word
+It was moving. 
+
+His moment is broken by a call through to his office. 
+And with it and invitation from Indira Gandhi of India and Tang Ke of China, who both suggested that the destruction of the ecosystem should be considered a crime against humanity. 
+They were starting A Working Group on Crimes Against the Environment to draft an Ecocide Convention to the United Nations. 
+He bites into his Kanelbullar and sips his espresso - the combination of cinnamon and coffee recharging him for the rest of his day. 
+Fika is over. 
+Back to work. 
+
+&lt;/div&gt;
+&lt;&lt;button &quot;Round Three&quot;&gt;&gt;&lt;&lt;goto &quot;game3a&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="16" name="game3a" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game3a&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;main class=&quot;game three&quot;&gt;&lt;h2&gt; Complete the Chat &lt;/h2&gt;
+&lt;div class=&quot;chat-container&quot;&gt;
+&lt;div class=&quot;message game&quot;&gt;&lt;p&gt;Do you have any shellkins?&lt;/p&gt;&lt;/div&gt;
+&lt;div class=&quot;message player hide&quot; id=&quot;player&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;message game typing hide&quot; id=&quot;typing&quot;&gt;&lt;div class=&quot;is-typing&quot;&gt;&lt;div class=&quot;jump1&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump3&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;chat-options&quot;&gt;
+&lt;&lt;button &quot;I prefer not to think about it&quot;&gt;&gt;
+    &lt;&lt;timed 0.8s&gt;&gt;
+      &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+      &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;I prefer not to think about it&lt;&lt;/replace&gt;&gt;
+      &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+    &lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;#typing&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 7s&gt;&gt;
+  &lt;&lt;replace &quot;.chat-container&quot;&gt;&gt;
+    &lt;div class=&quot;message game&quot;&gt;&lt;p&gt;How bad is it?&lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&quot;message player hide&quot; id=&quot;player&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;message game typing hide&quot; id=&quot;typing&quot;&gt;&lt;div class=&quot;is-typing&quot;&gt;&lt;div class=&quot;jump1&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump3&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;&lt;/replace&gt;&gt;
+&lt;&lt;/timed&gt;&gt;
+        &lt;&lt;timed 9s&gt;&gt;
+          &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;
+            &lt;&lt;button &quot;I think some of them might be committing climecrimes&quot;&gt;&gt;
+              &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;replace &quot;.message.player&quot;&gt;&gt;I think some of them might be committing climecrimes&lt;&lt;/replace&gt;&gt;
+              &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+              &lt;&lt;timed 4s&gt;&gt;&lt;&lt;goto &quot;game3b&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
+
+            &lt;&lt;button &quot;Not terrible, they&#39;re just climobsinate&quot;&gt;&gt;
+              &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+              &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;Not terrible, they&#39;re just climobsinate&lt;&lt;/replace&gt;&gt;
+              &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+              &lt;&lt;timed 4s&gt;&gt;&lt;&lt;goto &quot;game3b&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+            &lt;&lt;/button&gt;&gt;
+          &lt;&lt;/replace&gt;&gt;
+        &lt;&lt;/timed&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+
+&lt;&lt;button &quot;Yes,definitely&quot;&gt;&gt;
+  &lt;&lt;timed 0.8s&gt;&gt;
+    &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+    &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;Yes,definitely&lt;&lt;/replace&gt;&gt;
+    &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;
+  &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;#typing&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+  &lt;&lt;timed 7s&gt;&gt;
+    &lt;&lt;replace &quot;.chat-container&quot;&gt;&gt;
+      &lt;div class=&quot;message game&quot;&gt;&lt;p&gt;Do you talk to them about it?&lt;/p&gt;&lt;/div&gt;
+  &lt;div class=&quot;message player hide&quot; id=&quot;player&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;message game typing hide&quot; id=&quot;typing&quot;&gt;&lt;div class=&quot;is-typing&quot;&gt;&lt;div class=&quot;jump1&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump3&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;/div&gt;
+      &lt;&lt;/replace&gt;&gt;
+  &lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 9s&gt;&gt;&lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;
+    &lt;&lt;button &quot;Yes they&#39;re so climbostinate&quot;&gt;&gt;
+        &lt;&lt;timed 0.8s&gt;&gt;
+            &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+            &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;Yes they&#39;re so climbostinate&lt;&lt;/replace&gt;&gt;
+            &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+        &lt;&lt;/timed&gt;&gt;
+    &lt;&lt;timed 3s&gt;&gt;&lt;&lt;goto &quot;game3b&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+
+    &lt;&lt;button &quot;They do understand, they just won&#39;t change their behaviour&quot;&gt;&gt;
+      &lt;&lt;timed 0.8s&gt;&gt;
+        &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+        &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;They do understand, they just won&#39;t change their behaviour&lt;&lt;/replace&gt;&gt;
+        &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+      &lt;&lt;/timed&gt;&gt;
+          &lt;&lt;timed 3s&gt;&gt;&lt;&lt;goto &quot;game3b&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+    &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+
+    &lt;&lt;/button&gt;&gt;
+&lt;/div&gt;
+&lt;/main&gt;
+
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="game3b" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;game3b&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;main class=&quot;game three&quot;&gt;&lt;h2&gt; Complete the Chat &lt;/h2&gt;
+&lt;div class=&quot;chat-container&quot;&gt;
+&lt;div class=&quot;message game&quot;&gt;&lt;p&gt;Have you had any klibi recently?&lt;/p&gt;&lt;/div&gt;
+&lt;div class=&quot;message player hide&quot; id=&quot;player&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;message game typing hide&quot; id=&quot;typing&quot;&gt;&lt;div class=&quot;is-typing&quot;&gt;&lt;div class=&quot;jump1&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump3&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;chat-options&quot;&gt;
+    &lt;&lt;button &quot;Yes, I went to a city farm, I got lots of klibi from all the homegrown vegetables&quot;&gt;&gt;
+      &lt;&lt;timed 0.8s&gt;&gt;
+        &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+        &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;Yes, I went to a city farm, I got lots of klibi from all the homegrown vegetables&lt;&lt;/replace&gt;&gt;
+        &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+      &lt;&lt;/timed&gt;&gt;
+      &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;#typing&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+      &lt;&lt;timed 7s&gt;&gt;
+        &lt;&lt;replace &quot;.chat-container&quot;&gt;&gt;
+        &lt;div class=&quot;message game&quot;&gt;&lt;p&gt;Did you eat any of the vegetables?&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;message player hide&quot; id=&quot;player&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;message game typing hide&quot; id=&quot;typing&quot;&gt;&lt;div class=&quot;is-typing&quot;&gt;&lt;div class=&quot;jump1&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump3&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+        &lt;&lt;/replace&gt;&gt;
+    &lt;&lt;/timed&gt;&gt;
+    &lt;&lt;timed 9s&gt;&gt;&lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;
+        &lt;&lt;button &quot;No, but just being there, I felt so calm&quot;&gt;&gt;
+          &lt;&lt;timed 0.8s&gt;&gt;
+            &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+            &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;No, but just being there, I felt so calm&lt;&lt;/replace&gt;&gt;
+            &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+          &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;#typing&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+          &lt;&lt;timed 7s&gt;&gt;
+            &lt;&lt;replace &quot;.chat-container&quot;&gt;&gt;
+              &lt;div class=&quot;message game&quot;&gt;&lt;p&gt;Naturro?&lt;/p&gt;&lt;/div&gt;
+              &lt;div class=&quot;message player hide&quot; id=&quot;player&quot;&gt;&lt;/div&gt;
+              &lt;div class=&quot;message game typing hide&quot; id=&quot;typing&quot;&gt;&lt;div class=&quot;is-typing&quot;&gt;&lt;div class=&quot;jump1&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump3&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;&lt;/replace&gt;&gt;
+          &lt;&lt;/timed&gt;&gt;
+          &lt;&lt;timed 9s&gt;&gt;
+              &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;
+                &lt;&lt;button &quot;Exactly&quot;&gt;&gt;
+                &lt;&lt;timed 0.8s&gt;&gt;
+                    &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+                    &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;Exactly&lt;&lt;/replace&gt;&gt;
+                        &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+                    &lt;&lt;/timed&gt;&gt;
+                        &lt;&lt;timed 4s&gt;&gt;&lt;&lt;goto &quot;game3c&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+                &lt;&lt;/button&gt;&gt;
+                  &lt;&lt;button &quot;Not quite&quot;&gt;&gt;
+                    &lt;&lt;timed 0.8s&gt;&gt;
+                    &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+                    &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;Not quite&lt;&lt;/replace&gt;&gt;
+                        &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+                    &lt;&lt;/timed&gt;&gt;
+                        &lt;&lt;timed 4s&gt;&gt;&lt;&lt;goto &quot;game3c&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+                &lt;&lt;/button&gt;&gt;
+            
+              &lt;&lt;/replace&gt;&gt;
+          &lt;&lt;/timed&gt;&gt;
+    &lt;&lt;/button&gt;&gt;
+
+    &lt;&lt;button &quot;Yes, a potato&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+        &lt;&lt;/replace&gt;&gt;
+      &lt;&lt;/timed&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="options" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;options&quot;&gt;&gt;
+&lt;&lt;button &quot;I find it hard to feel klibi. I feel quite overwhelmed by my F.O.M.E&quot;&gt;&gt;
+
+&lt;&lt;timed 0.8s&gt;&gt;&lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;replace &quot;.message.player&quot;&gt;&gt;I find it hard to feel klibi. I feel quite overwhelmed by my F.O.M.E&lt;&lt;/replace&gt;&gt;&lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;#typing&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 7s&gt;&gt;&lt;&lt;replace &quot;.chat-container&quot;&gt;&gt;&lt;div class=&quot;message game&quot;&gt;&lt;p&gt;Have you tried Naturro as a way to help?&lt;/p&gt;&lt;/div&gt;
+&lt;div class=&quot;message player hide&quot; id=&quot;player&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;message game typing hide&quot; id=&quot;typing&quot;&gt;&lt;div class=&quot;is-typing&quot;&gt;&lt;div class=&quot;jump1&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump3&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;timed 9s&gt;&gt;&lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;button &quot;That&#39;s a good idea. What would you suggest?&quot;&gt;&gt;
+ &lt;&lt;timed 0.8s&gt;&gt;
+            &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+            &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;That&#39;s a good idea. What would you suggest?&lt;&lt;/replace&gt;&gt;
+            &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+          &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;#typing&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+          &lt;&lt;timed 7s&gt;&gt;
+            &lt;&lt;replace &quot;.chat-container&quot;&gt;&gt;
+              &lt;div class=&quot;message game&quot;&gt;&lt;p&gt;A walk by the sea or forest? &lt;/p&gt;&lt;/div&gt;
+              &lt;div class=&quot;message player hide&quot; id=&quot;player&quot;&gt;&lt;/div&gt;
+              &lt;div class=&quot;message game typing hide&quot; id=&quot;typing&quot;&gt;&lt;div class=&quot;is-typing&quot;&gt;&lt;div class=&quot;jump1&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump3&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;&lt;/replace&gt;&gt;
+          &lt;&lt;/timed&gt;&gt;
+          &lt;&lt;timed 9s&gt;&gt;
+              &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;
+                &lt;&lt;button &quot;I&#39;ll give it a go&quot;&gt;&gt;
+                &lt;&lt;timed 0.8s&gt;&gt;
+                    &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+                    &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;I&#39;ll give it a go&lt;&lt;/replace&gt;&gt;
+                        &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+                    &lt;&lt;/timed&gt;&gt;
+                        &lt;&lt;timed 4s&gt;&gt;&lt;&lt;goto &quot;game3c&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+                &lt;&lt;/button&gt;&gt;
+                  &lt;&lt;button &quot;Hmm maybe&quot;&gt;&gt;
+                    &lt;&lt;timed 0.8s&gt;&gt;
+                    &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+                    &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;Hmm maybe&lt;&lt;/replace&gt;&gt;
+                        &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+                    &lt;&lt;/timed&gt;&gt;
+                        &lt;&lt;timed 4s&gt;&gt;&lt;&lt;goto &quot;game3c&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+                &lt;&lt;/button&gt;&gt;
+            
+              &lt;&lt;/replace&gt;&gt;
+          &lt;&lt;/timed&gt;&gt;
+&lt;&lt;/button&gt;&gt;
+&lt;&lt;button &quot;I&#39;m not sure&quot;&gt;&gt;
+&lt;&lt;timed 0.8s&gt;&gt;
+            &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+            &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;I&#39;m not sure&lt;&lt;/replace&gt;&gt;
+            &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+          &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;#typing&quot; &quot;hide&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+          &lt;&lt;timed 7s&gt;&gt;
+            &lt;&lt;replace &quot;.chat-container&quot;&gt;&gt;
+              &lt;div class=&quot;message game&quot;&gt;&lt;p&gt;Sometimes you see groundrelief and it can be very calming &lt;/p&gt;&lt;/div&gt;
+              &lt;div class=&quot;message player hide&quot; id=&quot;player&quot;&gt;&lt;/div&gt;
+              &lt;div class=&quot;message game typing hide&quot; id=&quot;typing&quot;&gt;&lt;div class=&quot;is-typing&quot;&gt;&lt;div class=&quot;jump1&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump2&quot;&gt;&lt;/div&gt;&lt;div class=&quot;jump3&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;&lt;/replace&gt;&gt;
+          &lt;&lt;/timed&gt;&gt;
+          &lt;&lt;timed 9s&gt;&gt;
+              &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;
+                &lt;&lt;button &quot;I&#39;ll give it a go&quot;&gt;&gt;
+                &lt;&lt;timed 0.8s&gt;&gt;
+                    &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+                    &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;I&#39;ll give it a go&lt;&lt;/replace&gt;&gt;
+                        &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+                    &lt;&lt;/timed&gt;&gt;
+                        &lt;&lt;timed 4s&gt;&gt;&lt;&lt;goto &quot;game3c&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+                &lt;&lt;/button&gt;&gt;
+                  &lt;&lt;button &quot;Hmm maybe&quot;&gt;&gt;
+                    &lt;&lt;timed 0.8s&gt;&gt;
+                    &lt;&lt;removeclass &quot;#player&quot; &quot;hide&quot;&gt;&gt;
+                    &lt;&lt;replace &quot;.message.player&quot;&gt;&gt;Hmm maybe&lt;&lt;/replace&gt;&gt;
+                        &lt;&lt;replace &quot;.chat-options&quot;&gt;&gt;&lt;&lt;/replace&gt;&gt;
+                    &lt;&lt;/timed&gt;&gt;
+                        &lt;&lt;timed 4s&gt;&gt;&lt;&lt;goto &quot;game3c&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+                &lt;&lt;/button&gt;&gt;
+            
+              &lt;&lt;/replace&gt;&gt;
+          &lt;&lt;/timed&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;/button&gt;&gt;&lt;/div&gt;
+&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game3a&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;/main&gt;
+
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="story3" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;story1&quot;&gt;&gt;
+
+&lt;main class=&quot;story&quot;&gt;
+&lt;div class=&quot;paperold&quot;&gt;Polly Higgins knows she is reaching the end of her life. The doctors have told her it won’t be long and she should prepare. 
+She is only reaching half a decade of life on this planet but as she reflects on that time she realises it was time well spent, as an Earth Protector. 
+She remembers the moment her life changed. As a barrister, after a three-year laborious case representing a person who had been injured at work, she looked out the window at the Court of Appeal and thought &quot;The earth is being injured and harmed as well and nothing is being done about it…the earth is in need of a good lawyer&quot;
+This moment shifted her and she began her life’s work, a campaign to make ecocide a crime. 
+She spent her last decade making the word “ecocide” globally understood by giving talks, making documentaries and advising governments. Along the way she inspired thousands, from parliamentarians to ecologists and from lawyers to artists. She devoted all her time and unquenchable spirit to one client - the Earth.
+She looked up at the picture on her wall. 
+Prime position in her house
+A proud moment in a life full of striving for change. 
+She presents a definition of ecocide to the UN Law Commission in 2010: Ecocide is extensive loss, damage or destruction of ecosystems of a given territory(ies)… such that the peaceful enjoyment of the inhabitants has been or will be severely diminished. 
+Six months after her life ended, It was this definition that Pope Francis referred to in his call for ecocide to become a crime.
+
+
+&lt;/div&gt;
+&lt;&lt;button &quot;Round Three&quot;&gt;&gt;&lt;&lt;goto &quot;game3a&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="19" name="options" tags="" position="450,50" size="100,100">&lt;&lt;set $passage to &quot;options&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
   menu
@@ -829,7 +1299,7 @@ Ecocide
           &lt;&lt;button &quot;ghost detector&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;ghostdetector&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="codeword" tags="" position="450,1875" size="100,100">&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="codeword" tags="" position="450,1875" size="100,100">&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 Enter codeword 
@@ -858,13 +1328,17 @@ which is codeword:
   &lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;
   &lt;/div&gt;
   &lt;/main&gt;
-  &lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="playaudio" tags="" position="450,2000" size="100,100">&lt;&lt;include &quot;header&quot;&gt;&gt;
+  &lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="playaudio" tags="" position="450,2000" size="100,100">&lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;&lt;set $passage to &quot;playaudio&quot;&gt;&gt;
 &lt;&lt;audio &quot;badjoke&quot; play&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;&lt;&lt;include &quot;footer&quot;&gt;&gt;
 &lt;main&gt;playing audio which continues playing on next passage
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;buttonchoice&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="buttonchoice" tags="" position="450,2150" size="100,100">&lt;&lt;set $passage to &quot;buttonchoice&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;
+
+
+/* :: buttonchoice {&quot;position&quot;:&quot;450,2150&quot;,&quot;size&quot;:&quot;100,100&quot;}
+&lt;&lt;set $passage to &quot;buttonchoice&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
   &lt;div class=&quot;door-container&quot;&gt;
@@ -873,15 +1347,15 @@ which is codeword:
   &lt;&lt;timed 3s&gt;&gt;&lt;div class=&quot;door-item&quot;&gt;&lt;span&gt;DOOR B&lt;/span&gt;&lt;&lt;button [img[&quot;https://youhavefoundconey.net/CG/what/assets/img/door-white.png&quot;][Door B]]&gt;&gt;&lt;&lt;set $doorchoice to &quot;B&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;doorB&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/timed&gt;&gt;
   &lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="doorA" tags="" position="625,2175" size="100,100">&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt; */</tw-passagedata><tw-passagedata pid="22" name="doorA" tags="" position="625,2175" size="100,100">&lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 Door A
   &lt;&lt;timed 2s&gt;&gt;&lt;&lt;goto &quot;captions&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="20" name="doorB" tags="" position="750,2175" size="100,100">&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="23" name="doorB" tags="" position="750,2175" size="100,100">&lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 Door B
   &lt;&lt;timed 2s&gt;&gt;&lt;&lt;goto &quot;captions&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="21" name="captions" tags="" position="450,2300" size="100,100">&lt;&lt;set $passage to &quot;captions&quot;&gt;&gt;
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="24" name="captions" tags="" position="450,2300" size="100,100">&lt;&lt;set $passage to &quot;captions&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
   &lt;div id=&quot;captions&quot;&gt;&lt;/div&gt;
@@ -891,7 +1365,7 @@ Door B
 
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;goingbacktochoice&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="goingbacktochoice" tags="" position="450,2425" size="100,100">&lt;&lt;set $passage to &quot;goingbacktochoice&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="goingbacktochoice" tags="" position="450,2425" size="100,100">&lt;&lt;set $passage to &quot;goingbacktochoice&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 Which door did you choose?
 
@@ -900,7 +1374,7 @@ Which door did you choose?
 
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;answeringlongquestion&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="answeringlongquestion" tags="" position="450,2575" size="100,100">&lt;&lt;set $passage to &quot;answeringlongquestion&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="answeringlongquestion" tags="" position="450,2575" size="100,100">&lt;&lt;set $passage to &quot;answeringlongquestion&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 &lt;&lt;textarea &quot;$answer&quot;&quot; Write your answer here&quot;&gt;&gt;
 &lt;&lt;button &quot;Enter&quot;&gt;&gt;&lt;&lt;goto &quot;results&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
@@ -908,7 +1382,7 @@ Which door did you choose?
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;results&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="results" tags="" position="450,2725" size="100,100">&lt;&lt;set $passage to &quot;results&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="results" tags="" position="450,2725" size="100,100">&lt;&lt;set $passage to &quot;results&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 Your long answer to the question was: 
@@ -916,14 +1390,14 @@ $answer
 
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;map&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="map" tags="" position="450,2850" size="100,100">&lt;&lt;set $passage to &quot;map&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="map" tags="" position="450,2850" size="100,100">&lt;&lt;set $passage to &quot;map&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;&lt;&lt;set $myMap = setup.generateDirectionsMap(51.515145100985166,-0.08905860787295125,51.51341581900639, -0.0850674807043743)&gt;&gt;
 &lt;main&gt;$myMap
 Wish list: get rid of the More options/directions box!
 
 &lt;&lt;button &quot;I&#39;m in the right place&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;map&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="addletters" tags="" position="450,1750" size="100,100">&lt;&lt;set $passage to &quot;addletters&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="addletters" tags="" position="450,1750" size="100,100">&lt;&lt;set $passage to &quot;addletters&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
  Enter 6-8 letters:
@@ -944,7 +1418,7 @@ Wish list: get rid of the More options/directions box!
 &lt;&lt;else&gt;&gt;&lt;&lt;replace &quot;#lettersresult&quot;&gt;&gt;Must be 6-8 letters, please try again&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/if&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="wordminusletters" tags="" position="575,1750" size="100,100">&lt;&lt;set $passage to &quot;wordminusletters&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="wordminusletters" tags="" position="575,1750" size="100,100">&lt;&lt;set $passage to &quot;wordminusletters&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 Original letters: $letters
@@ -954,7 +1428,7 @@ Original letters: $letters
 Original letters minus 2 random letters: $letters
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;codeword&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="choices" tags="" position="450,1475" size="100,100">&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="choices" tags="" position="450,1475" size="100,100">&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 
@@ -979,19 +1453,19 @@ Original letters minus 2 random letters: $letters
 
 &lt;div id=&quot;choicetally&quot;&gt;0&lt;/div&gt;
 
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="29" name="badchoices" tags="" position="450,1600" size="100,100">&lt;&lt;set $passage to &quot;badchoices&quot;&gt;&gt;
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="32" name="badchoices" tags="" position="450,1600" size="100,100">&lt;&lt;set $passage to &quot;badchoices&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
  You made bad choices...
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;addletters&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="goodchoices" tags="" position="575,1600" size="100,100">&lt;&lt;set $passage to &quot;goodchoices&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="goodchoices" tags="" position="575,1600" size="100,100">&lt;&lt;set $passage to &quot;goodchoices&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
  You made good choices...
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;addletters&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="randomfromlist" tags="" position="450,1325" size="100,100">&lt;&lt;set $passage to &quot;randomfromlist&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="randomfromlist" tags="" position="450,1325" size="100,100">&lt;&lt;set $passage to &quot;randomfromlist&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 &lt;&lt;set $list to [&#39;Rock&#39;,&#39;Paper&#39;,&#39;Scissors&#39;]&gt;&gt;
@@ -1004,7 +1478,7 @@ $list
 
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;addletters&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="wordle" tags="" position="450,1150" size="100,100">&lt;&lt;set $passage to &quot;wordle&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="wordle" tags="" position="450,1150" size="100,100">&lt;&lt;set $passage to &quot;wordle&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 
@@ -1050,7 +1524,7 @@ Make it so this word says &quot;REDO&quot;
 
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="generatecodes" tags="" position="450,750" size="100,100">&lt;&lt;set $passage to &quot;generatecodes&quot;&gt;&gt;&lt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="generatecodes" tags="" position="450,750" size="100,100">&lt;&lt;set $passage to &quot;generatecodes&quot;&gt;&gt;&lt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;&lt;&lt;set $code1 to setup.generate5LetterCode()&gt;&gt;
 &lt;&lt;set $code2 to setup.generate5LetterCode()&gt;&gt;
@@ -1078,19 +1552,19 @@ Code 3: &lt;&lt;textbox &quot;$code3guess&quot; &quot;&quot;&gt;&gt;
 
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;wordle&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="allcorrect" tags="" position="450,900" size="100,100">&lt;&lt;set $passage to &quot;badchoices&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="allcorrect" tags="" position="450,900" size="100,100">&lt;&lt;set $passage to &quot;badchoices&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 All correct
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;multiplechoicecode&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="allnotcorrect" tags="" position="575,900" size="100,100">&lt;&lt;set $passage to &quot;badchoices&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="allnotcorrect" tags="" position="575,900" size="100,100">&lt;&lt;set $passage to &quot;badchoices&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 All not correct
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;multiplechoicecode&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="multiplechoicecode" tags="" position="450,1025" size="100,100">&lt;&lt;set $passage to &quot;badchoices&quot;&gt;&gt;&lt;&lt;set $nextpass to &quot;multiplechoicecode&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="multiplechoicecode" tags="" position="450,1025" size="100,100">&lt;&lt;set $passage to &quot;badchoices&quot;&gt;&gt;&lt;&lt;set $nextpass to &quot;multiplechoicecode&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 &lt;&lt;set $wrongcode1 to setup.generate5LetterCode()&gt;&gt;
@@ -1130,7 +1604,7 @@ Pick the correct codes from before (they&#39;re followed by a &#39;C&#39;)
 
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;wordle&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="countdown" tags="" position="450,2300" size="100,100">&lt;&lt;set $passage to &quot;countdown&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="countdown" tags="" position="450,2300" size="100,100">&lt;&lt;set $passage to &quot;countdown&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 &lt;&lt;set $seconds to 30&gt;&gt;
@@ -1148,7 +1622,7 @@ Countdown: &lt;span id=&quot;countdown&quot;&gt;$seconds seconds remaining&lt;/s
 	&lt;&lt;/repeat&gt;&gt;
 &lt;&lt;/silently&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="end" tags="" position="450,1875" size="100,100">&lt;&lt;set $passage to &quot;19&quot;&gt;&gt;&lt;&lt;set $endMap = setup.generateDirectionsMap({lat:51.515145100985166,long:-0.08905860787295125},{lat:51.51341581900639, long:-0.0850674807043743})&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="end" tags="" position="450,1875" size="100,100">&lt;&lt;set $passage to &quot;19&quot;&gt;&gt;&lt;&lt;set $endMap = setup.generateDirectionsMap({lat:51.515145100985166,long:-0.08905860787295125},{lat:51.51341581900639, long:-0.0850674807043743})&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 
 End location
@@ -1156,7 +1630,7 @@ End location
 $endMap
   
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="stampgameeasy" tags="" position="450,400" size="100,100">&lt;&lt;set $passage to &quot;stampgameeasy&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="42" name="stampgameeasy" tags="" position="450,400" size="100,100">&lt;&lt;set $passage to &quot;stampgameeasy&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 
@@ -1209,7 +1683,7 @@ Click the button if you see the same stamp twice.
 
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;stampgamehard&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="stampgamehard" tags="" position="450,550" size="100,100">&lt;&lt;set $passage to &quot;stampgameeasy&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="43" name="stampgamehard" tags="" position="450,550" size="100,100">&lt;&lt;set $passage to &quot;stampgameeasy&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 
@@ -1263,7 +1737,7 @@ Click the button if you see the same stamp twice.
 
 &lt;&lt;button &quot;next&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto &quot;generatecodes&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="ghostdetector" tags="" position="450,225" size="100,100">&lt;&lt;set $passage to &quot;badchoices&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="44" name="ghostdetector" tags="" position="450,225" size="100,100">&lt;&lt;set $passage to &quot;badchoices&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 
