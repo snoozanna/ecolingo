@@ -16,10 +16,12 @@ e.co.lingo
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
 
 :root{
-    --green: #2bcdb5;
+    /* --green: #2bcdb5; */
+    --green: #58CC02;
   --purple: #7736db;
   --yellow: #ffc548;
   --pink: #fa7f98;
+  --orange: #FF9600;
   --blue: #009ef4;
   --white: #f9f8f5;
   --offwhite: hsla(0,0%,100%,.5)
@@ -219,19 +221,43 @@ header > img.globe{
 
 main{
    padding: 2rem;
-   margin-block-end: 4rem
+   margin-block-end: 4rem;
+
 }
 
 footer{
    display:flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-end; 
   position:fixed;
   bottom: 0;
   left:0;
   padding: 2rem;
   width: 100%;
+/* z-index: -99 */
+}
 
+.complete >button {
+  background: transparent;
+  width: fit-content;
+  padding: 0
+}
+
+.complete >button:hover {
+border: 0
+}
+
+
+.round-marker{
+  background:grey;
+  padding:2rem;
+  margin-inline-end: 1.5rem;
+  border-radius: 50%;
+
+}
+
+.round-marker.complete{
+   background: var(--green)
 }
 
 h1{
@@ -384,12 +410,40 @@ button{
 main.game{
   display:flex;
    justify-content: center;
+   width:100%
 }
+.game-wrapper{
+  display:flex;
+  justify-content: space-between;
+     width:100%
+}
+
+.game-item.dictionary{
+ width: 30%;
+ background-image: url("./assets/img/paperbackground.jpg");
+ color: black;
+ padding: 1rem
+}
+
+.game-item.dictionary > h3{
+text-decoration: uppercase;
+font-size: 2.5rem
+}
+
+.definition > h3{
+  margin-bottom: 0
+}
+
+.game-item.answers-wrapper{
+ width: 70%
+}
+
+
 
 .answers-wrapper{
     display:flex;
     flex-direction: column;
-   justify-content: center;
+   justify-content: flex-start;
    text-align: center
 }
 
@@ -397,7 +451,11 @@ main.game{
   display:flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem
+  gap: 2rem
+}
+
+.answers > ul >li {
+max-width: 33%
 }
 
 .answer > button {
@@ -411,21 +469,27 @@ main.game{
 }
 
 .correct > button{
-  background-color: #58a700
+  background-color: var(--green)
 }
 
 /* GAME TWO  */
 main.game.two{flex-direction: column}
 
+.game.two > .question{
+  text-align: center
+}
+
 .pictures-wrapper{
   display:flex;
-  justify-content:space-between;
+  justify-content:space-around;
   align-items:center;
   width:100%
 }
 
 .pictures-item{
-  max-width: 30%
+  width: 30%;
+  max-width: 300px
+  
 }
 
 /* GAME THREE  */
@@ -433,8 +497,13 @@ main.game.three{flex-direction: column;
   justify-content: center;
   align-items: center;}
 
+main.game.three > h2{
+  margin-bottom:0
+}
 .chat-container{
   border: solid var(--offwhite) 2px;
+  
+    background: var(--offwhite) ;
       border-width: 2px;
       border-radius: 10px;
   width: 50%;
@@ -446,9 +515,12 @@ main.game.three{flex-direction: column;
 }
 
 .message {
-  border: solid var(--offwhite) 2px;
+  border: solid black 1.5px;
   width:fit-content;
-  padding: 1rem
+  padding: 1rem;
+  background: var(--orange) ;
+  color: black;
+
 }
 
 .message.game{
@@ -457,6 +529,7 @@ main.game.three{flex-direction: column;
 
 .message.player{
   border-radius: 10px 10px 0 10px ;
+    background: var(--green) ;
 align-self:flex-end
 }
 .message > p{
@@ -570,8 +643,36 @@ align-self:flex-end
   }
 
 
+  /* GAME FOUR  */
+main.game.four{flex-direction: column;
+  justify-content: center;
+  align-items: center;}
+
+main.game.four > p > button {
+  padding:1rem
+}
+
+.record-wrapper{
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+}  
+
+.record-item {
+  width:49%
+}
+
+.record-item.speakpipe {
+  width:30%;
+  display:flex;
+  flex-direction: column
+}
+
+
 /* STORY INTERJECTIONS */
 main.story{
+
   display:flex;
   flex-direction:column;
   justify-content: center;
@@ -580,7 +681,7 @@ main.story{
 }
 .paperold{
 background-image: url("./assets/img/paperbackground.jpg");
-    width: 90vw;
+    width: 50vw;
     padding: 2rem;
     color: black;
     transform: skewY(0.9deg);
@@ -651,6 +752,7 @@ $(document.head).find('#style-ui-bar').remove();
     };
 }();
 
+
 // MAKE MAP FUNCTION
 
 setup.generateDirectionsMap = function (origin, dest){
@@ -685,22 +787,30 @@ setup.checkForRepeats = (array,element) => {
 }
 
 
-/* :: StoryInit {"position":"100,100","size":"100,100"}
-<<cacheaudio "badjoke" "https://youhavefoundconey.net/CG/what/assets/audio/badjoke.mp3">>
-<<waitforaudio>> */
+:: StoryInit {"position":"100,100","size":"100,100"}
+ /* <<cacheaudio "badjoke" "https://youhavefoundconey.net/CG/what/assets/audio/badjoke.mp3">>
+<<waitforaudio>>  */
+<<set $pagetitle to "Round 1">>
+<<set $roundone to false>>
+<<set $roundtwo to false>>
+<<set $roundthree to false>>
+<<set $roundfour to false>>
 
 
 :: headerHome {"position":"100,225","size":"100,100"}
-<header>
-<h1>e.co.lingo</h1>
-<span>Site Language: English ></span></header>
+<header><h1>e.co.lingo</h1><span>Site Language: English ></span></header>
 
 :: header {"position":"100,225","size":"100,100"}
 <header><h1>e.co.lingo</h1><img class="spinning globe" src="./assets/img/earth.png" alt="a cartoon globe"></header>
 
 
 :: footer {"position":"100,375","size":"100,100"}
-<footer><div></div><div class="nav-wrapper "><span>1</span>2<span></span><span>3</span><span>4</span></div></footer>
+<footer><div class="nav-wrapper "><<button "menu">><<goto "menu">><</button>></div><div class="nav-wrapper "> 
+<<if $roundone is true>> <div class="round-marker complete" id="marker1"><<button "1">><<goto "game1a">><</button>></div><<else>><div class="round-marker" id="marker1">1</div><</if>>
+<<if $roundtwo is true>> <div class="round-marker complete" id="marker2"><<button "2">><<goto "game2a">><</button>></div><<else>><div class="round-marker" id="marker2">2</div><</if>>
+ <<if $roundthree is true>> <div class="round-marker complete" id="marker3"><<button "3">><<goto "game3a">><</button>></div>
+ <<else>><div class="round-marker" id="marker3">3</div><</if>>
+ <<if $roundfour is true>> <div class="round-marker complete" id="marker4"><<button "4">><<goto "game4a">><</button>></div><<else>><div class="round-marker" id="marker4">4</div><</if>></div></footer>
 
 
 :: lost {"position":"450,50","size":"100,100"}
@@ -715,11 +825,29 @@ You have two options:
 </main>
 <<include "footer">>
 
+:: menu
+
+<main>
+  <div class="menu-wrapper">
+    <<button "landing">><<goto "landing">><</button>>
+    <<button "game one">><<goto "game1a">><</button>>
+    <<button "story one">><<goto "story1">><</button>>
+    <<button "game two">><<goto "game2a">><</button>>
+    <<button "story two">><<goto "story2">><</button>>
+    <<button "game three">><<goto "game3a">><</button>>
+    <<button "story three">><<goto "story3">><</button>>
+    <<button "game four">><<goto "game4a">><</button>>
+        <<button "story four">><<goto "story4">><</button>>
+  
+  </div> 
+</main>
+
+
 :: landing {"position":"450,50","size":"100,100"}
 <<set $passage to "landing">>
 <<include "headerHome">>
 <main class="landing">
-<div class="landing-item"><img class="hero" src="./assets/img/earth.png" alt="a cartoon globe"></div>
+<div class="landing-item"><img class="hero spinning" src="./assets/img/earth.png" alt="a cartoon globe"></div>
  <div class="landing-item">
     <p class="tagline">A fun, free and effective way to learn a climate language </p>
     <<button "Get Started">><<goto "game1a">><</button>>
@@ -732,22 +860,22 @@ You have two options:
 <<set $dictionary to []>>
 <<include "header">>
 <main class="game one" >
-<div class="dictionary"><h3>Dictionary</h3><<print $dictionary>></div>
-<div class="answers-wrapper"><h2 class="question" id="question">Which one of these is “F.O.M.E”? </h2>
-<div class="answers">
-<ul>
-<li class="answer one"><<button "stubbornly refusing to change one’s opinion about climate change">>
-<<timed 0.2s>><<addclass ".answer.one" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
-<<timed 2.5s>><<removeclass ".answer.one" "wrong" >> <<replace "#question">>Which one of these is “F.O.M.E”? <</replace>><</timed>>
-<</button>></li>
-<li class="answer two"><<button "fear of mass extinction">><<timed 0.2s>><<addclass ".answer.two" "correct" >> <<replace "#question">>Correct! <</replace>><</timed>>
-<<timed 2.5s>><<set $dictionary.push("<div class='definition'><h3>F.O.M.E</h3><p>fear of mass extinction</p></div>")>>
-<<goto "game1b">>
-<</timed>> <</button>></li>
-<li class="answer three"><<button "the complete feeling of peace only found in nature.">> <<timed 0.2s>><<addclass ".answer.three" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
-<<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">>Which one of these is “F.O.M.E”? <</replace>><</timed>><</button>></li>
-</ul>
-</div>
+<div class="game-wrapper">
+  <div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
+  <div class="answers-wrapper game-item"><h2 class="question" id="question">Which one of these is “F.O.M.E”? </h2>  <div class="answers">
+  <ul><li class="answer one"><<button "stubbornly refusing to change one’s opinion about climate change">>
+  <<timed 0.2s>><<addclass ".answer.one" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+  <<timed 2.5s>><<removeclass ".answer.one" "wrong" >> <<replace "#question">>Which one of these is “F.O.M.E”? <</replace>><</timed>>
+  <</button>></li>
+  <li class="answer two"><<button "fear of mass extinction">><<timed 0.2s>><<addclass ".answer.two" "correct" >> <<replace "#question">>Correct! <</replace>><</timed>>
+  <<timed 2.5s>><<set $dictionary.push("<div class='definition'><h3>F.O.M.E</h3><p>fear of mass extinction</p></div>")>>
+  <<goto "game1b">>
+  <</timed>> <</button>></li>
+  <li class="answer three"><<button "the complete feeling of peace only found in nature.">> <<timed 0.2s>><<addclass ".answer.three" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+  <<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">>Which one of these is “F.O.M.E”? <</replace>><</timed>><</button>></li>
+  </ul>
+  </div>
+  </div>
 </div>
 </main>
 <<include "footer">>
@@ -756,8 +884,9 @@ You have two options:
 <<set $passage to "game1b">>
 <<include "header">>
 <main class="game one" >
-<div class="dictionary"><h3>Dictionary</h3><<print $dictionary>></div>
-<div class="answers-wrapper"><h2 class="question" id="question">Which word describes the feeling you get when natural things are returned to nature?</h2>
+<div class="game-wrapper">
+<div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
+<div class="answers-wrapper game-item"><h2 class="question" id="question">Which word describes the feeling you get when natural things are returned to nature?</h2>
 <div class="answers">
 <ul>
 <li class="answer one"><<button "waterdox">>
@@ -775,17 +904,19 @@ You have two options:
 </ul>
 </div>
 </div>
+</div>
 </main>
 <<include "footer">>
-<<button "back">><<goto "game1b">><</button>>
+
 
 
 :: game1c {"position":"450,50","size":"100,100"}
 <<set $passage to "game1c">>
 <<include "header">>
 <main class="game one" >
-<div class="dictionary"><h3>Dictionary</h3><<print $dictionary>></div>
-<div class="answers-wrapper"><h2 class="question" id="question">Which one of these is “Climecrime”?</h2>
+<div class="game-wrapper">
+<div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
+<div class="answers-wrapper game-item"><h2 class="question" id="question">Which one of these is “Climecrime”?</h2>
 <div class="answers">
 <ul>
 <li class="answer one"><<button "a criminal offence causing more climate problems.">> <<timed 0.2s>><<addclass ".answer.one" "correct" >> 
@@ -803,16 +934,17 @@ You have two options:
 </ul>
 </div>
 </div>
+</div>
 </main>
 <<include "footer">>
-<<button "back">><<goto "game1b">><</button>>
 
 :: game1d {"position":"450,50","size":"100,100"}
 <<set $passage to "game1d">>
 <<include "header">>
 <main class="game one" >
-<div class="dictionary"><h3>Dictionary</h3><<print $dictionary>></div>
-<div class="answers-wrapper"><h2 class="question" id="question"> Which one of these is “Naturro”?</h2>
+<div class="game-wrapper">
+<div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
+<div class="answers-wrapper game-item"><h2 class="question" id="question"> Which one of these is “Naturro”?</h2>
 <div class="answers">
 <ul>
 <li class="answer one"><<button "the complete feeling of peace only found in nature.">> <<timed 0.2s>><<addclass ".answer.one" "correct" >> 
@@ -830,16 +962,18 @@ You have two options:
 </ul>
 </div>
 </div>
+</div>
 </main>
 <<include "footer">>
-<<button "back">><<goto "game1c">><</button>>
+
 
 :: game1e {"position":"450,50","size":"100,100"}
 <<set $passage to "game1e">>
 <<include "header">>
 <main class="game one" >
-<div class="dictionary"><h3>Dictionary</h3><<print $dictionary>></div>
-<div class="answers-wrapper"><h2 class="question" id="question"> Which word describes a beautiful view of something awful caused by climate change, like an oil spill?</h2>
+<div class="game-wrapper">
+<div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
+<div class="answers-wrapper game-item"><h2 class="question" id="question"> Which word describes a beautiful view of something awful caused by climate change, like an oil spill?</h2>
 <div class="answers">
 <ul>
 
@@ -852,43 +986,192 @@ You have two options:
 <</button>></li>
 <li class="answer three"><<button "Trista ">> <<timed 0.2s>><<addclass ".answer.three" "correct" >> 
 <<replace "#question">>Correct! <</replace>><</timed>>
-<<timed 2.5s>><<set $dictionary.push("<div class='definition'><h3>Trista </h3><p>a beautiful view of something awful caused by climate change, like an oil spill</p></div>")>><<goto "story1">><</timed>> 
+<<timed 2.5s>><<set $dictionary.push("<div class='definition'><h3>Trista </h3><p>a beautiful view of something awful caused by climate change, like an oil spill</p></div>")>><<goto "game1f">><</timed>> 
 <</button>></li>
 
 </ul>
+</div>
 </div>
 </div>
 </main>
 <<include "footer">>
 <<button "back">><<goto "game1d">><</button>>
 
+:: game1f {"position":"450,50","size":"100,100"}
+<<set $passage to "game1f">>
+<<include "header">>
+<main class="game one" >
+<div class="game-wrapper">
+<div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
+<div class="answers-wrapper game-item"><h2 class="question" id="question"> Which one of these is “Breathaching”?</h2>
+<div class="answers">
+<ul>
+
+<li class="answer one"><<button "the complete feeling of peace only found in nature. ">>
+<<timed 0.2s>><<addclass ".answer.one" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+<<timed 2.5s>><<removeclass ".answer.one" "wrong" >> <<replace "#question">> Which one of these is “Breathaching”? <</replace>><</timed>>
+<</button>></li>
+
+<li class="answer two"><<button " painful feeling that overcomes you when you experience a trista  ">> <<timed 0.2s>><<addclass ".answer.two" "correct" >> 
+<<replace "#question">>Correct! <</replace>><</timed>>
+<<timed 2.5s>><<set $dictionary.push("<div class='definition'><h3>Breathaching </h3><p> painful feeling that overcomes you when you experience a trista </p></div>")>><<goto "game1g">><</timed>> 
+<</button>></li>
+
+<li class="answer three"><<button "the feeling you get when someone else does something good for our planet. ">><<timed 0.2s>><<addclass ".answer.three" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
+<<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> Which one of these is “Breathaching”?<</replace>><</timed>>
+<</button>></li>
+
+</ul>
+</div>
+</div>
+</div>
+</main>
+<<include "footer">>
+
+
+
+:: game1g {"position":"450,50","size":"100,100"}
+<<set $passage to "game1g">>
+<<include "header">>
+<main class="game one" >
+<div class="game-wrapper">
+<div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
+<div class="answers-wrapper game-item"><h2 class="question" id="question"> Which word describes a relative who works for a company destroying the planet? </h2>
+<div class="answers">
+<ul>
+
+<li class="answer one"><<button "Climecrime ">>
+<<timed 0.2s>><<addclass ".answer.one" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+<<timed 2.5s>><<removeclass ".answer.one" "wrong" >> <<replace "#question">> Which word describes a relative who works for a company destroying the planet?  <</replace>><</timed>>
+<</button>></li>
+
+<li class="answer two"><<button "Climobstinate ">><<timed 0.2s>><<addclass ".answer.two" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
+<<timed 2.5s>><<removeclass ".answer.two" "wrong" >> <<replace "#question">> Which word describes a relative who works for a company destroying the planet? <</replace>><</timed>>
+<</button>></li>
+
+<li class="answer three"><<button "Shellkin">> <<timed 0.2s>><<addclass ".answer.three" "correct" >> 
+<<replace "#question">>Correct! <</replace>><</timed>>
+<<timed 2.5s>><<set $dictionary.push("<div class='definition'><h3>Shellkin</h3><p> a relative who works for a company destroying the planet </p></div>")>><<goto "game1h">><</timed>> 
+<</button>></li>
+
+
+
+</ul>
+</div>
+</div>
+</div>
+</main>
+<<include "footer">>
+
+
+:: game1h {"position":"450,50","size":"100,100"}
+<<set $passage to "game1h">>
+<<include "header">>
+<main class="game one" >
+<div class="game-wrapper">
+<div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
+<div class="answers-wrapper game-item"><h2 class="question" id="question"> Which one of these is “Waterdox”? </h2>
+<div class="answers">
+<ul>
+<li class="answer one"><<button "the paradox of water pollution, lack of drinkwater and the “abundance” of water flooding the earth.">> <<timed 0.2s>><<addclass ".answer.one" "correct" >> 
+<<replace "#question">>Correct! <</replace>><</timed>>
+<<timed 2.5s>><<set $dictionary.push("<div class='definition'><h3>Waterdox</h3><p>the paradox of water pollution, lack of drinkwater and the “abundance” of water flooding the earth</p></div>")>><<goto "game1i">><</timed>> 
+<</button>></li>
+
+<li class="answer two"><<button "Climobstinate ">><<timed 0.2s>><<addclass ".answer.two" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
+<<timed 2.5s>><<removeclass ".answer.two" "wrong" >> <<replace "#question">> Which one of these is “Waterdox”? <</replace>><</timed>>
+<</button>></li>
+
+<li class="answer three"><<button "stubbornly refusing to change one’s opinion about climate change">>
+<<timed 0.2s>><<addclass ".answer.three" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+<<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> Which one of these is “Waterdox”?  <</replace>><</timed>>
+<</button>></li>
+</ul>
+</div></div></div>
+</main>
+<<include "footer">>
+
+
+:: game1i {"position":"450,50","size":"100,100"}
+<<set $passage to "game1i">>
+<<include "header">>
+<main class="game one" >
+<div class="game-wrapper">
+<div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
+<div class="answers-wrapper game-item"><h2 class="question" id="question"> Which one of these is “Klibi”?</h2>
+<div class="answers">
+<ul>
+<li class="answer one"><<button "Fear of Mass Extinction">><<timed 0.2s>><<addclass ".answer.one" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
+<<timed 2.5s>><<removeclass ".answer.one" "wrong" >> <<replace "#question">>Which one of these is “Klibi”?<</replace>><</timed>>
+<</button>></li>
+
+<li class="answer two"><<button "the painful feeling that overcomes you when you experience a trista ">>
+<<timed 0.2s>><<addclass ".answer.two" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+<<timed 2.5s>><<removeclass ".answer.two" "wrong" >> <<replace "#question">>Which one of these is “Klibi”? <</replace>><</timed>>
+<</button>></li>
+
+<li class="answer three"><<button "the feeling you get when someone else does something good for our planet.">> <<timed 0.2s>><<addclass ".answer.three" "correct" >> 
+<<replace "#question">>Correct! <</replace>><</timed>>
+<<timed 2.5s>><<set $dictionary.push("<div class='definition'><h3>Klibi</h3><p>the feeling you get when someone else does something good for our planet.</p></div>")>><<goto "game1j">><</timed>> 
+<</button>></li>
+</ul>
+</div></div></div>
+</main>
+<<include "footer">>
+
+
+:: game1j {"position":"450,50","size":"100,100"}
+<<set $passage to "game1j">>
+<<include "header">>
+<main class="game one" >
+<div class="game-wrapper">
+<div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
+<div class="answers-wrapper game-item"><h2 class="question" id="question"> Which word describes stubbornly refusing to change one’s opinion about climate change? </h2>
+<div class="answers">
+<ul>
+<li class="answer one"><<button "Trista ">><<timed 0.2s>><<addclass ".answer.one" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
+<<timed 2.5s>><<removeclass ".answer.one" "wrong" >> <<replace "#question">>Which word describes stubbornly refusing to change one’s opinion about climate change? <</replace>><</timed>>
+<</button>></li>
+
+<li class="answer two"><<button "Climobstinate">> <<timed 0.2s>><<addclass ".answer.two" "correct" >> 
+<<replace "#question">>Correct! <</replace>><</timed>>
+<<timed 2.5s>><<set $dictionary.push("<div class='definition'><h3>Climobstinate</h3><p>stubbornly refusing to change one’s opinion about climate change</p></div>")>><<goto "story1">><</timed>> 
+<</button>></li>
+
+<li class="answer three"><<button "the painful feeling that overcomes you when you experience a trista ">>
+<<timed 0.2s>><<addclass ".answer.three" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+<<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">>Which word describes stubbornly refusing to change one’s opinion about climate change?  <</replace>><</timed>>
+<</button>></li>
+
+
+</ul>
+</div></div></div>
+</main>
+<<include "footer">>
+
 
 :: story1 {"position":"450,50","size":"100,100"}
-<<set $passage to "story1">>
-
-<main class="story">
-<div class="paperold">Professor Arthur W. Galston stands in the dark sidelines of the stage, out in the light he’ll be delivering the biggest speech of his career. 
-He peeks out at the audiences shuffling in their seats, awaiting his words. 
-Washington, a city of influence, is the location for this year's Conference on War and National Responsibility, and he is the keynote. 
-He stares down at the page packed with the sentences he will use to convey his message, the words that will conjure images in the audience’s minds. Most of these words are well known in these settings 
-‘And’,
-‘But’,
-& ‘Fiscal Responsibility’
-However, there is a new word on this page. 
-A word that characterises the massive damage and destruction of ecosystems he has seen first hand. 
-A word he will utter for the first time in public.
-A word he hopes has the power to spark change. 
-Ecocide
+<<set $passage to "story1">><<set $roundone to true>><main class="story">
+<div class="paperold"><p>  Professor Arthur W. Galston stands in the dark sidelines of the stage, out in the light he’ll be delivering the biggest speech of his career. 
+  He peeks out at the audiences shuffling in their seats, awaiting his words. 
+  Washington, a city of influence, is the location for this year's Conference on War and National Responsibility, and he is the keynote. 
+  He stares down at the page packed with the sentences he will use to convey his message, the words that will conjure images in the audience’s minds. Most of these words are well known in these settings 
+  ‘And’,
+  ‘But’,
+  & ‘Fiscal Responsibility’
+  However, there is a new word on this page. 
+  A word that characterises the massive damage and destruction of ecosystems he has seen first hand. 
+  A word he will utter for the first time in public.
+  A word he hopes has the power to spark change. 
+  Ecocide
+</p>
 </div>
 <<button "Round Two">><<goto "game2a">><</button>></main>
 
 
-:: game2a {"position":"450,50","size":"100,100"}
-<<set $passage to "game2a">>
 
-<<include "header">>
-<main class="game two" >
-<h2 class="question" id="question"> What can you see?</h2>
+:: game2a {"position":"450,50","size":"100,100"}
+<<set $passage to "game2a">><<include "header">><main class="game two" ><h2 class="question" id="question"> What can you see?</h2>
 <div class="pictures-wrapper"><img class="pictures-item" src="./assets/img/1.png" alt="">
 <img class="pictures-item" src="./assets/img/2.png" alt="">
 <img class="pictures-item" src="./assets/img/3.png" alt=""></div>
@@ -904,28 +1187,17 @@ Ecocide
 <</button>></li>
 <li class="answer three"><<button "Shellkin ">><<timed 0.2s>><<addclass ".answer.three" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
 <<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
-<</button>></li>
-
-</ul>
-</div>
-</div>
-</main>
-
+<</button>></li></ul>
+</div></main>
 <<include "footer">>
 
 
 :: game2b {"position":"450,50","size":"100,100"}
-<<set $passage to "game2a">>
-
-<<include "header">>
-<main class="game two" >
-<h2 class="question" id="question"> What can you see?</h2>
+<<set $passage to "game2a">><<include "header">><main class="game two" ><h2 class="question" id="question"> What can you see?</h2>
 <div class="pictures-wrapper"><img class="pictures-item" src="./assets/img/4.png" alt="">
 <img class="pictures-item" src="./assets/img/5.png" alt="">
 <img class="pictures-item" src="./assets/img/6.png" alt=""></div>
-<div class="answers">
-<ul>
-
+<div class="answers"><ul>
 <li class="answer one"><<button "F.O.M.E">>
 <<timed 0.2s>><<addclass ".answer.one" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
 <<timed 2.5s>><<removeclass ".answer.one" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
@@ -937,26 +1209,20 @@ Ecocide
 <li class="answer three"><<button "Klibli">><<timed 0.2s>><<addclass ".answer.three" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
 <<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
 <</button>></li>
-
 </ul>
 </div>
-</div>
+
 </main>
 
 <<include "footer">>
 
 :: game2c {"position":"450,50","size":"100,100"}
-<<set $passage to "game2a">>
-
-<<include "header">>
-<main class="game two" >
-<h2 class="question" id="question"> What can you see?</h2>
+<<set $passage to "game2a">><<include "header">><main class="game two" ><h2 class="question" id="question"> What can you see?</h2>
 <div class="pictures-wrapper"><img class="pictures-item" src="./assets/img/7.png" alt="">
 <img class="pictures-item" src="./assets/img/8.png" alt="">
 <img class="pictures-item" src="./assets/img/9.png" alt=""></div>
 <div class="answers">
 <ul>
-
 <li class="answer one"><<button "Climecrime">>
 <<timed 0.2s>><<addclass ".answer.one" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
 <<timed 2.5s>><<removeclass ".answer.one" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
@@ -971,13 +1237,12 @@ Ecocide
 
 </ul>
 </div>
-</div>
 </main>
 
 <<include "footer">>
 
 :: story2 {"position":"450,50","size":"100,100"}
-<<set $passage to "story1">>
+<<set $passage to "story1">><<set $roundtwo to true>>
 
 <main class="story">
 <div class="paperold">Two years after Professor Galston has used the word for the first time, Swedish Prime Minister Olof Palme sits down for Fika in his office. 
@@ -1013,7 +1278,7 @@ Back to work.
 </div>
 <div class="chat-options">
 <<button "I prefer not to think about it">>
-    <<timed 0.8s>>
+    <<timed 0.3s>>
       <<removeclass "#player" "hide">>
       <<replace ".message.player">>I prefer not to think about it<</replace>>
       <<replace ".chat-options">><</replace>>
@@ -1046,7 +1311,7 @@ Back to work.
 <</button>>
 
 <<button "Yes,definitely">>
-  <<timed 0.8s>>
+  <<timed 0.3s>>
     <<removeclass "#player" "hide">>
     <<replace ".message.player">>Yes,definitely<</replace>>
     <<replace ".chat-options">><</replace>>
@@ -1062,7 +1327,7 @@ Back to work.
   <</timed>>
 <<timed 9s>><<replace ".chat-options">>
     <<button "Yes they're so climbostinate">>
-        <<timed 0.8s>>
+        <<timed 0.3s>>
             <<removeclass "#player" "hide">>
             <<replace ".message.player">>Yes they're so climbostinate<</replace>>
             <<replace ".chat-options">><</replace>>
@@ -1071,7 +1336,7 @@ Back to work.
     <</button>>
 
     <<button "They do understand, they just won't change their behaviour">>
-      <<timed 0.8s>>
+      <<timed 0.3s>>
         <<removeclass "#player" "hide">>
         <<replace ".message.player">>They do understand, they just won't change their behaviour<</replace>>
         <<replace ".chat-options">><</replace>>
@@ -1097,7 +1362,7 @@ Back to work.
 </div>
 <div class="chat-options">
     <<button "Yes, I went to a city farm, I got lots of klibi from all the homegrown vegetables">>
-      <<timed 0.8s>>
+      <<timed 0.3s>>
         <<removeclass "#player" "hide">>
         <<replace ".message.player">>Yes, I went to a city farm, I got lots of klibi from all the homegrown vegetables<</replace>>
         <<replace ".chat-options">><</replace>>
@@ -1113,7 +1378,7 @@ Back to work.
     <</timed>>
     <<timed 9s>><<replace ".chat-options">>
         <<button "No, but just being there, I felt so calm">>
-          <<timed 0.8s>>
+          <<timed 0.3s>>
             <<removeclass "#player" "hide">>
             <<replace ".message.player">>No, but just being there, I felt so calm<</replace>>
             <<replace ".chat-options">><</replace>><</timed>>
@@ -1129,7 +1394,7 @@ Back to work.
           <<timed 9s>>
               <<replace ".chat-options">>
                 <<button "Exactly">>
-                <<timed 0.8s>>
+                <<timed 0.3s>>
                     <<removeclass "#player" "hide">>
                     <<replace ".message.player">>Exactly<</replace>>
                         <<replace ".chat-options">><</replace>>
@@ -1137,7 +1402,7 @@ Back to work.
                         <<timed 4s>><<goto "game3c">><</timed>>
                 <</button>>
                   <<button "Not quite">>
-                    <<timed 0.8s>>
+                    <<timed 0.3s>>
                     <<removeclass "#player" "hide">>
                     <<replace ".message.player">>Not quite<</replace>>
                         <<replace ".chat-options">><</replace>>
@@ -1149,14 +1414,49 @@ Back to work.
           <</timed>>
     <</button>>
 
-    <<button "Yes, a potato">><</button>>
+    <<button "Yes, a potato">>
+    
+      <<timed 0.3s>>
+      <<removeclass "#player" "hide">>
+      <<replace ".message.player">>Yes, a potato<</replace>>
+      <<replace ".chat-options">><</replace>>
+    <</timed>>
+<<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
+<<timed 7s>>
+  <<replace ".chat-container">>
+    <div class="message game"><p>Delicious?</p></div>
+    <div class="message player hide" id="player"></div>
+    <div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+    </div>
+  <</replace>>
+<</timed>>
+        <<timed 9s>>
+          <<replace ".chat-options">>
+            <<button "Yes! like groundrelief but for my belly">>
+              <<timed 0.3s>>
+              <<removeclass "#player" "hide">><<replace ".message.player">>Yes! like groundrelief but for my belly<</replace>>
+              <<replace ".chat-options">><</replace>>
+              <</timed>>
+              <<timed 4s>><<goto "game3c">><</timed>>
+            <</button>>
+
+            <<button "Sure">>
+              <<timed 0.3s>>
+              <<removeclass "#player" "hide">>
+              <<replace ".message.player">>Sure<</replace>>
+              <<replace ".chat-options">><</replace>>
+              <</timed>>
+              <<timed 4s>><<goto "game3c">><</timed>>
+            <</button>>
+          <</replace>>
+        <</timed>><</button>>
         <</replace>>
       <</timed>><</button>>
 
 
 <<button "I find it hard to feel klibi. I feel quite overwhelmed by my F.O.M.E">>
 
-<<timed 0.8s>><<removeclass "#player" "hide">><<replace ".message.player">>I find it hard to feel klibi. I feel quite overwhelmed by my F.O.M.E<</replace>><<replace ".chat-options">><</replace>><</timed>>
+<<timed 0.3s>><<removeclass "#player" "hide">><<replace ".message.player">>I find it hard to feel klibi. I feel quite overwhelmed by my F.O.M.E<</replace>><<replace ".chat-options">><</replace>><</timed>>
 <<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
 <<timed 7s>><<replace ".chat-container">><div class="message game"><p>Have you tried Naturro as a way to help?</p></div>
 <div class="message player hide" id="player"></div>
@@ -1164,7 +1464,7 @@ Back to work.
 </div>
 <</replace>><</timed>>
 <<timed 9s>><<replace ".chat-options">><<button "That's a good idea. What would you suggest?">>
- <<timed 0.8s>>
+ <<timed 0.3s>>
             <<removeclass "#player" "hide">>
             <<replace ".message.player">>That's a good idea. What would you suggest?<</replace>>
             <<replace ".chat-options">><</replace>><</timed>>
@@ -1180,7 +1480,7 @@ Back to work.
           <<timed 9s>>
               <<replace ".chat-options">>
                 <<button "I'll give it a go">>
-                <<timed 0.8s>>
+                <<timed 0.3s>>
                     <<removeclass "#player" "hide">>
                     <<replace ".message.player">>I'll give it a go<</replace>>
                         <<replace ".chat-options">><</replace>>
@@ -1188,7 +1488,7 @@ Back to work.
                         <<timed 4s>><<goto "game3c">><</timed>>
                 <</button>>
                   <<button "Hmm maybe">>
-                    <<timed 0.8s>>
+                    <<timed 0.3s>>
                     <<removeclass "#player" "hide">>
                     <<replace ".message.player">>Hmm maybe<</replace>>
                         <<replace ".chat-options">><</replace>>
@@ -1200,7 +1500,7 @@ Back to work.
           <</timed>>
 <</button>>
 <<button "I'm not sure">>
-<<timed 0.8s>>
+<<timed 0.3s>>
             <<removeclass "#player" "hide">>
             <<replace ".message.player">>I'm not sure<</replace>>
             <<replace ".chat-options">><</replace>><</timed>>
@@ -1216,7 +1516,7 @@ Back to work.
           <<timed 9s>>
               <<replace ".chat-options">>
                 <<button "I'll give it a go">>
-                <<timed 0.8s>>
+                <<timed 0.3s>>
                     <<removeclass "#player" "hide">>
                     <<replace ".message.player">>I'll give it a go<</replace>>
                         <<replace ".chat-options">><</replace>>
@@ -1224,7 +1524,7 @@ Back to work.
                         <<timed 4s>><<goto "game3c">><</timed>>
                 <</button>>
                   <<button "Hmm maybe">>
-                    <<timed 0.8s>>
+                    <<timed 0.3s>>
                     <<removeclass "#player" "hide">>
                     <<replace ".message.player">>Hmm maybe<</replace>>
                         <<replace ".chat-options">><</replace>>
@@ -1236,14 +1536,102 @@ Back to work.
           <</timed>>
 <</button>><</replace>><</timed>>
 <</button>></div>
-<<button "back">><<goto "game3a">><</button>>
+
 </main>
 
 <<include "footer">>
 
 
+
+:: game3c {"position":"450,50","size":"100,100"}
+<<set $passage to "game3c">><<include "header">><main class="game three"><h2> Complete the Chat </h2>
+<div class="chat-container">
+<div class="message game"><p>I feel so overwhelmed by waterdox</p></div>
+<div class="message player hide" id="player"></div>
+<div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+   </div>
+</div>
+<div class="chat-options">
+<<button "I'm always overwhelmed by paradoxes'">>
+    <<timed 0.3s>>
+      <<removeclass "#player" "hide">>
+      <<replace ".message.player">>I'm always overwhelmed by paradoxes<</replace>>
+      <<replace ".chat-options">><</replace>>
+    <</timed>>
+<<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
+<<timed 7s>>
+  <<replace ".chat-container">>
+    <div class="message game"><p>I wish we could just redirect the water to where it needs to go</p></div>
+    <div class="message player hide" id="player"></div>
+    <div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+    </div>
+  <</replace>>
+<</timed>>
+        <<timed 9s>>
+          <<replace ".chat-options">>
+            <<button "We might get a moment of groundrelief">>
+              <<timed 0.3s>>
+              <<removeclass "#player" "hide">><<replace ".message.player">>We might get a moment of groundrelief<</replace>>
+              <<replace ".chat-options">><</replace>>
+              <</timed>>
+              <<timed 4s>><<goto "story3">><</timed>>
+            <</button>>
+
+            <<button "Maybe a big network of water tubes in the sky?">>
+              <<timed 0.3s>>
+              <<removeclass "#player" "hide">>
+              <<replace ".message.player">>Maybe a big network of water tubes in the sky?<</replace>>
+              <<replace ".chat-options">><</replace>>
+              <</timed>>
+              <<timed 4s>><<goto "story3">><</timed>>
+            <</button>>
+          <</replace>>
+        <</timed>>
+<</button>>
+
+<<button "Yes, we have such bad flooding">>
+  <<timed 0.3s>>
+    <<removeclass "#player" "hide">>
+    <<replace ".message.player">>Yes, we have such bad flooding<</replace>>
+    <<replace ".chat-options">><</replace>>
+  <</timed>>
+  <<timed 2.5s>><<removeclass "#typing" "hide">><</timed>>
+  <<timed 7s>>
+    <<replace ".chat-container">>
+      <div class="message game"><p>And they cause each other... the water can't absorb because the land is so dry</p></div>
+  <div class="message player hide" id="player"></div>
+  <div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+  </div>
+      <</replace>>
+  <</timed>>
+<<timed 9s>><<replace ".chat-options">>
+    <<button "It's like the land is climobstinate">>
+        <<timed 0.3s>>
+            <<removeclass "#player" "hide">>
+            <<replace ".message.player">>It's like the land is climobstinate<</replace>>
+            <<replace ".chat-options">><</replace>>
+        <</timed>>
+    <<timed 3s>><<goto "story3">><</timed>>
+    <</button>>
+
+    <<button "Sometimes though you get a water city, a real trista">>
+      <<timed 0.3s>>
+        <<removeclass "#player" "hide">>
+        <<replace ".message.player">>Sometimes though you get a water city, a real trista<</replace>>
+        <<replace ".chat-options">><</replace>>
+      <</timed>>
+          <<timed 3s>><<goto "story3">><</timed>>
+    <</button>>
+    <</replace>><</timed>>
+
+    <</button>>
+</div>
+</main>
+
+<<include "footer">>
+
 :: story3 {"position":"450,50","size":"100,100"}
-<<set $passage to "story1">>
+<<set $passage to "story3">><<set $roundthree to true>>
 
 <main class="story">
 <div class="paperold">Polly Higgins knows she is reaching the end of her life. The doctors have told her it won’t be long and she should prepare. 
@@ -1259,590 +1647,85 @@ Six months after her life ended, It was this definition that Pope Francis referr
 
 
 </div>
-<<button "Round Three">><<goto "game3a">><</button>></main>
+<<button "Round Four">><<goto "game4a">><</button>></main>
 
-:: options {"position":"450,50","size":"100,100"}
-<<set $passage to "options">>
-<<include "header">>
-<main>
-  menu
+:: game4a {"position":"450,50","size":"100,100"}
+<<set $passage to "game4a">><<include "header">><main class="game four" ><h2> Your challenge </h2>
+<p> Read <<button "this text">>
+          <<replace "#recordItem">><p> A second-year agronomy student at Palestine Technical University Basel Amarna was searching for a direction for his career. Browsing academic publication site he stumbled across hydroponics, a type of horticulture and a subset of hydroculture which involves growing plants without soil, by using water-based mineral nutrient solutions in aqueous solvents. It was a new agricultural technique to him – and, at the time, to Palestine.
 
-<div class="menu-wrapper">
-  <<button "enter codeword">><<set $prevpass to $passage>><<goto "codeword">><</button>>
-  <<button "playaudio">><<set $prevpass to $passage>><<goto "playaudio">><</button>>
-  <<button "buttonchoice">><<set $prevpass to $passage>><<goto "buttonchoice">><</button>>
-  <<button "captions">><<set $prevpass to $passage>><<goto "captions">><</button>>
-  <<button "answeringlongquestion">><<set $prevpass to $passage>><<goto "answeringlongquestion">><</button>>
-  <<button "map">><<set $prevpass to $passage>><<goto "map">><</button>>
-  <<button "addletters">><<set $prevpass to $passage>><<goto "addletters">><</button>>
-  <<button "choicetally">><<set $prevpass to $passage>><<goto "choices">><</button>>
-  <<button "random from list">><<set $prevpass to $passage>><<goto "randomfromlist">><</button>>
-  <<button "wordle">><<set $prevpass to $passage>><<goto "wordle">><</button>>
-  <<button "generate codes">><<set $prevpass to $passage>><<goto "generatecodes">><</button>>
-    <<button "stamp game easy">><<set $prevpass to $passage>><<goto "stampgameeasy">><</button>>
-     <<button "stamp game hard">><<set $prevpass to $passage>><<goto "stampgamehard">><</button>>
-          <<button "ghost detector">><<set $prevpass to $passage>><<goto "ghostdetector">><</button>>
-</div>
-</main>
-<<include "footer">>
+“People need food. We have to start growing our own food in our gardens, inside the house, on a rooftop, anywhere.” – Basel Amarna 
 
+“I created this project because of the lack of water resources and agricultural obstacles affecting the whole world,” Basel tells us. “We can create a more sustainable environment by sharing new sustainable agricultural practices as an integrated solution.” 
 
-:: codeword {"position":"450,1875","size":"100,100"}
-<<set $passage to "landing">>
-<<include "header">>
-<main>
-Enter codeword 
-which is codeword:
+After years of experimentation and studying, Basel has established himself as one of the forefront Palestinian experts working on hydroponics, having published an academic paper about the technique and soilless culture.
 
+As with any expert pioneering a field of study, Basel’s business journey was wrought with challenges. Palestinian farmers were skeptical of the agricultural alternative, and investors even more so. Explaining the theory of hydroponics to farmers was not working, and so when Basel graduated in 2015, he opened his own farm in order to lead by example. Today it is registered as a private limited company sharing solutions worldwide.
+</p><</replace>><</button>> and record your response using two of the words from your e.co.lingo</p>
+<div class="record-wrapper">
+  <div class="record-item" id="recordItem">
+      </div>
+  <div class="record-item speakpipe"> <iframe src="https://www.speakpipe.com/widget/inline/kp6xzmubni8enwhrhvqo1sx5cbst92iy" allow="microphone" width="100%" height="200" frameborder="0"></iframe>
+    <<button "I have finished my recording">><<goto "story4">><</button>></div>
 
-<div id="coderesult"></div>
-/% CODEWORD FEEDBACK %/
-<div id="resultbutton">
-/% CODEWORD INPUT %/
-<div class="code-input">
-<<textbox "$codeword" "">></div>
-<<button "Enter">>
-</div>
-/% STANDARDISE INPUT %/
-<<set $codeword to $codeword.toUpperCase()>>
-/% CODEWORD CORRECT %/
-<<if $codeword isnot "" and $codeword is "CODEWORD">>
-<<replace "#coderesult">>CORRECT<</replace>>
-<<timed 3s>><<set $prevpass to $passage>><<goto "playaudio">><</timed>>
-<</if>>
-  /% CODEWORD INCORRECT %/
-  <<if $codeword isnot "" and $codeword is not "CODEWORD">>
-  <<replace "#coderesult">>Thats not right.<</replace>>
-  <<timed 1.5s>><<replace "#coderesult">><</replace>><</timed>>
-  <</if>><</button>>
-  </div>
-  </main>
-  <<include "footer">>
-
-
-:: playaudio {"position":"450,2000","size":"100,100"}
-<<include "header">>
-<<set $passage to "playaudio">>
-<<audio "badjoke" play>>
-<<include "header">><<include "footer">>
-<main>playing audio which continues playing on next passage
-<<button "next">><<set $prevpass to $passage>><<goto "buttonchoice">><</button>></main>
-<<include "footer">>
-
-
-/* :: buttonchoice {"position":"450,2150","size":"100,100"}
-<<set $passage to "buttonchoice">>
-<<include "header">>
-<main>
-  <div class="door-container">
-  <<timed 1s>><div class="door-item"><span>DOOR A</span><<button [img["https://youhavefoundconey.net/CG/what/assets/img/door-white.png"][Door A]]>><<set $doorchoice to "A">><<set $prevpass to $passage>><<goto "doorA">><</button>></div><</timed>>
-  <<timed 2s>><div class="door-item"><span>or</span></div><</timed>>
-  <<timed 3s>><div class="door-item"><span>DOOR B</span><<button [img["https://youhavefoundconey.net/CG/what/assets/img/door-white.png"][Door B]]>><<set $doorchoice to "B">><<set $prevpass to $passage>><<goto "doorB">><</button>></div><</timed>>
-  </div>
-</main>
-<<include "footer">> */
-
-
-:: doorA {"position":"625,2175","size":"100,100"}
-<<include "header">>
-<main>
-Door A
-  <<timed 2s>><<goto "captions">><</timed>>
-</main>
-
-
-:: doorB {"position":"750,2175","size":"100,100"}
-<<include "header">>
-<main>
-Door B
-  <<timed 2s>><<goto "captions">><</timed>>
-</main>
-
-
-:: captions {"position":"450,2300","size":"100,100"}
-<<set $passage to "captions">>
-<<include "header">>
-<main>
-  <div id="captions"></div>
-  <<type 50ms >>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <</type>>
-
-   <<type 70ms>>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <</type>>
-
-<<button "next">><<set $prevpass to $passage>><<goto "goingbacktochoice">><</button>>
-</main>
-<<include "footer">>
-
-
-:: goingbacktochoice {"position":"450,2425","size":"100,100"}
-<<set $passage to "goingbacktochoice">><<include "header">>
-<main>
-Which door did you choose?
-
-<<timed 2s>>You chose Door $doorchoice<</timed>>
-
-
-<<button "next">><<set $prevpass to $passage>><<goto "answeringlongquestion">><</button>>
-</main>
-<<include "footer">>
-
-
-:: answeringlongquestion {"position":"450,2575","size":"100,100"}
-<<set $passage to "answeringlongquestion">><<include "header">>
-<main>
-<<textarea "$answer"" Write your answer here">>
-<<button "Enter">><<goto "results">><</button>>
-
-<<button "next">><<set $prevpass to $passage>><<goto "results">><</button>>
-
-</main>
-<<include "footer">>
-
-
-:: results {"position":"450,2725","size":"100,100"}
-<<set $passage to "results">>
-<<include "header">>
-<main>
-Your long answer to the question was: 
-$answer
-
-<<button "next">><<set $prevpass to $passage>><<goto "map">><</button>>
-</main>
-<<include "footer">>
-
-
-:: map {"position":"450,2850","size":"100,100"}
-<<set $passage to "map">>
-<<include "header">><<set $myMap = setup.generateDirectionsMap(51.515145100985166,-0.08905860787295125,51.51341581900639, -0.0850674807043743)>>
-<main>$myMap
-Wish list: get rid of the More options/directions box!
-
-<<button "I'm in the right place">><<set $prevpass to $passage>><<goto "map">><</button>>
-</main>
-<<include "footer">>
-
-
-:: addletters {"position":"450,1750","size":"100,100"}
-<<set $passage to "addletters">>
-<<include "header">>
-<main>
- Enter 6-8 letters:
- 
-<<textbox "$letters" "">>
-<div id="lettersresult"></div>
-<<button "Enter">>
-<div id="lettersresult"></div>
-/% LETTERS FEEDBACK %/
-<div id="resultbutton">
-</div>
-/% INPUT VALIDATION%/
-/% Uses regex to check input is 6-8 letters %/
-<<set $validationFunc to (input)=>{return  /^[a-z]{6,8}$/.test(input) }>>
-<<if $validationFunc($letters)>>
-<<replace "#lettersresult">>Letters accepted<</replace>>
-<<timed 1s>><<set $prevpass to $passage>><<goto "wordminusletters">><</timed>>
-<<else>><<replace "#lettersresult">>Must be 6-8 letters, please try again<</replace>>
-<</if>><</button>>
-</main>
-<<include "footer">>
-
-
-:: wordminusletters {"position":"575,1750","size":"100,100"}
-<<set $passage to "wordminusletters">>
-<<include "header">>
-<main>
-Original letters: $letters
-<<set $lettersArray to $letters.split("")>>
-<<run $lettersArray.pluckMany(2)>>
-<<set $letters to $lettersArray.join("")>>
-Original letters minus 2 random letters: $letters
-<<button "next">><<set $prevpass to $passage>><<goto "codeword">><</button>>
-</main>
-<<include "footer">>
-
-
-:: choices {"position":"450,1475","size":"100,100"}
-<<set $passage to "landing">>
-<<include "header">>
-<main>
-
-<<set $choicetally to 0>>
-
-<<button "Good choices">>
-<<set $choicetally to $choicetally + 1 >>
-<<replace "#choicetally">>$choicetally<</replace>>
-<</button>>
-
-<<button "Bad choices">><<set $choicetally to $choicetally - 1 >>
-<<replace "#choicetally">>$choicetally<</replace>>
-<</button>>
-
-<<button "Finish">>
-<<if $choicetally gt 0>>
-<<set $prevpass to $passage>><<goto "goodchoices">>
-<<else>>
-<<set $prevpass to $passage>><<goto "badchoices">>
-<</if>>
-<</button>>
-
-<div id="choicetally">0</div>
-
-</main>
-
-
-:: badchoices {"position":"450,1600","size":"100,100"}
-<<set $passage to "badchoices">>
-<<include "header">>
-<main>
- You made bad choices...
-<<button "next">><<set $prevpass to $passage>><<goto "addletters">><</button>>
-</main>
-<<include "footer">>
-
-
-:: goodchoices {"position":"575,1600","size":"100,100"}
-<<set $passage to "goodchoices">>
-<<include "header">>
-<main>
- You made good choices...
-<<button "next">><<set $prevpass to $passage>><<goto "addletters">><</button>>
-</main>
-<<include "footer">>
-
-
-:: randomfromlist {"position":"450,1325","size":"100,100"}
-<<set $passage to "randomfromlist">>
-<<include "header">>
-<main>
-<<set $list to ['Rock','Paper','Scissors']>>
-$list
-<<button "Pick random">>
-<<set $randomitem to $list.random()>>
-<<replace "#randomitem">>$randomitem<</replace>>
-<</button>>
-<div id = "randomitem"></div>
-
-<<button "next">><<set $prevpass to $passage>><<goto "addletters">><</button>>
-</main>
-<<include "footer">>
-
-
-:: wordle {"position":"450,1150","size":"100,100"}
-<<set $passage to "wordle">>
-<<include "header">>
-<main>
-
-Make it so this word says "REDO"
-
-<div class="wordcontainer">
-  <div class = "letter-item r">
-      R
-  </div>
-  <div class = "letter-item e">
-      E
-  </div>
-  <div class = "letter-item d">
-    <<textbox "$d" "">>
-  </div>
-  <div class = "letter-item o">
-    <<textbox "$o" "">>
-  </div>
-</div>
-
-
-<div class = "nextplaceholder">
-	<<button "Submit">>
-
-  <<if $d.toUpperCase() is  "D">>
-      <<replace ".d">>
-        D
-      <</replace>>
-  <</if>>
-  <<if $o.toUpperCase() is  "O">>
-      <<replace ".o">>
-          O
-      <</replace>>
-  <</if>>
-    <<if $d.toUpperCase() is "D" and $o.toUpperCase() is "O">>
-    <<replace ".nextplaceholder">>
-   	 <<button "next">><<set $prevpass to $passage>><<goto "randomfromlist">>
-   	 <</button>>
-    <</replace>>
-  <</if>>
-<</button>>
 </div>
 
 
 </main>
 <<include "footer">>
 
+/* <script async src="https://www.speakpipe.com/widget/loader.js" charset="utf-8"></script> */
 
-:: generatecodes {"position":"450,750","size":"100,100"}
-<<set $passage to "generatecodes">><
-<<include "header">>
-<main><<set $code1 to setup.generate5LetterCode()>>
-<<set $code2 to setup.generate5LetterCode()>>
-<<set $code3 to setup.generate5LetterCode()>><<set $sixletterwordlist to ["BABBLE","ABASED","ABACUS","KEBABS","LABELS","MACAWS","NABBED","RABBIT","UGLIER","YACHTS"]>><<set $randomsixletterword to $sixletterwordlist.random()>>
-Here is a random six letter word:
-$randomsixletterword
+:: texttorespond
+<p> A second-year agronomy student at Palestine Technical University Basel Amarna was searching for a direction for his career. Browsing academic publication site he stumbled across hydroponics, a type of horticulture and a subset of hydroculture which involves growing plants without soil, by using water-based mineral nutrient solutions in aqueous solvents. It was a new agricultural technique to him – and, at the time, to Palestine.
 
-Please input the 3 codes correctly:
+“People need food. We have to start growing our own food in our gardens, inside the house, on a rooftop, anywhere.” – Basel Amarna 
 
-Code 1: $code1
-Code 2: $code2
-Code 3: $code3
+“I created this project because of the lack of water resources and agricultural obstacles affecting the whole world,” Basel tells us. “We can create a more sustainable environment by sharing new sustainable agricultural practices as an integrated solution.” 
 
-Code 1: <<textbox "$code1guess" "">>
-Code 2: <<textbox "$code2guess" "">>
-Code 3: <<textbox "$code3guess" "">>
+After years of experimentation and studying, Basel has established himself as one of the forefront Palestinian experts working on hydroponics, having published an academic paper about the technique and soilless culture.
 
-<<button "Submit">>
-<<if $code1 is $code1guess and $code2 is $code2guess and $code3 is $code3guess>>
-	<<set $prevpass to $passage>><<goto "allcorrect">>
-<<else>>
-	<<set $prevpass to $passage>><<goto "allnotcorrect">>
-<</if>>
-<</button>>
-
-<<button "next">><<set $prevpass to $passage>><<goto "wordle">><</button>>
-</main>
-<<include "footer">>
-
-
-:: allcorrect {"position":"450,900","size":"100,100"}
-<<set $passage to "badchoices">>
-<<include "header">>
-<main>
-All correct
-<<button "next">><<set $prevpass to $passage>><<goto "multiplechoicecode">><</button>>
-</main>
-<<include "footer">>
-
-
-:: allnotcorrect {"position":"575,900","size":"100,100"}
-<<set $passage to "badchoices">>
-<<include "header">>
-<main>
-All not correct
-<<button "next">><<set $prevpass to $passage>><<goto "multiplechoicecode">><</button>>
-</main>
-<<include "footer">>
-
-
-:: multiplechoicecode {"position":"450,1025","size":"100,100"}
-<<set $passage to "badchoices">><<set $nextpass to "multiplechoicecode">>
-<<include "header">>
-<main>
-<<set $wrongcode1 to setup.generate5LetterCode()>>
-<<set $wrongcode2 to setup.generate5LetterCode()>>
-<<set $wrongcode3 to setup.generate5LetterCode()>>
-
-<<set $answers to [
-"<label><<checkbox '$code1chosen' false true>> $code1 C</label>",
-"<label><<checkbox '$code2chosen' false true>> $code2 C</label>",
-"<label><<checkbox '$code3chosen' false true>> $code3 C</label>",
-"<label><<checkbox '$wrongcode1chosen' false true>> $wrongcode1</label>",
-"<label><<checkbox '$wrongcode2chosen' false true>> $wrongcode2</label>",
-"<label><<checkbox '$wrongcode3chosen' false true>> $wrongcode3</label>"
-]>>
-
-The six letter word from earlier was:
-$randomsixletterword
-
-Pick the correct codes from before (they're followed by a 'C')
-
-<<for _i to 0; _i = $answers.length; _i++>>
-	<<run $answer = $answers.pluck()>>
-    $answer
-<</for>>
-
-<<button "Submit">>
- <<if $code1chosen and $code2chosen and $code3chosen and !$wrongcode1chosen and !$wrongcode2chosen and !$wrongcode3chosen>>
- 	<<replace ".codefeedback">>That's correct!<</replace>>
- <<else>>
- 	<<replace ".codefeedback">>That's incorrect<</replace>>
- <</if>>
-<</button>>
-
-<div class = "codefeedback">
-</div>
-
-
-<<button "next">><<set $prevpass to $passage>><<goto "wordle">><</button>>
-</main>
-<<include "footer">>
-
-
-:: countdown {"position":"450,2300","size":"100,100"}
-<<set $passage to "countdown">>
-<<include "header">>
-<main>
-<<set $seconds to 30>>
-Countdown: <span id="countdown">$seconds seconds remaining</span>!\
-<<silently>>
-	<<repeat 1s>>
-		<<set $seconds to $seconds - 1>>
-		<<if $seconds gt 0>>
-			<<replace "#countdown">>$seconds seconds remaining<</replace>>
-		<<else>>
-			<<replace "#countdown">>Times up!<</replace>>
-			<<set $prevpass to $passage>><<goto "landing">>
-			<<stop>>
-		<</if>>
-	<</repeat>>
-<</silently>>
-</main>
-<<include "footer">>
-
-
-:: end {"position":"450,1875","size":"100,100"}
-<<set $passage to "19">><<set $endMap = setup.generateDirectionsMap({lat:51.515145100985166,long:-0.08905860787295125},{lat:51.51341581900639, long:-0.0850674807043743})>><<include "header">>
-<main>
-
-End location
-
-$endMap
+As with any expert pioneering a field of study, Basel’s business journey was wrought with challenges. Palestinian farmers were skeptical of the agricultural alternative, and investors even more so. Explaining the theory of hydroponics to farmers was not working, and so when Basel graduated in 2015, he opened his own farm in order to lead by example. Today it is registered as a private limited company sharing solutions worldwide.
+</p>
   
-</main>
-<<include "footer">>
+
+:: story4 {"position":"450,50","size":"100,100"}
+<<set $passage to "story4">><<set $roundfour to true>><main class="story">
+<div class="paperold">It is June 2021 and Dior Fall Sow begins to let others in from the waiting room; she has begun to get the hang of Zoom, just as their final session arrives. 
+
+She begins by checking in with everyone to see how COVID is impacting their daily lives, before getting on with the meeting agenda. 
+
+Twelve lawyers from across the world; from Sierra Leone, Bangladesh to Samoa are connecting with her in Senegal to discuss a word that has dominated their last 6 months, ‘ecocide’.
+
+A word coined over fifty years ago by Professor Arthur W. Galston.
+A word that lives in their cortex. 
+
+Dior Fall holds the meeting and only has to ask Pablo Fajardo to unmute himself 3 times, which is progress indeed. 
+They are the Stop Ecocide Foundation.
+And today they are finalising their amendment to the Rome Statute to include a crime of ‘ecocide’, for the Legal Definition of Ecocide.
+
+This amendment could contribute to a monumental change of consciousness, in support of a new direction, one that enhances the protection of the environment and supports a more collaborative and effective legal framework for our common future on a shared planet. It offers a new and practical legal tool. 
+
+It is in no way a done deal, but as Dior Fall closes the meeting, albeit slightly early as she hits the Leave button accidentally, she feels hopeful for a moment. 
+Adding this word to the Rome Statute could be significant.  
+Words change our brains, they affect the wiring of our brains, which affects our bodily systems. 
+The words we hear and the words we use are important. 
+The power of a word can shape our future. 
 
 
-:: stampgameeasy {"position":"450,400","size":"100,100"}
-<<set $passage to "stampgameeasy">>
-<<include "header">>
-<main>
-
-<<set $stamps = [1,2,3,4,5,6,7,1]>>
-<<set $stampcount to 0>>
-
-STAMP GAME - EASY
-Click the button if you see the same stamp twice.
-
-<div class="stamp-container">$stamps[$stampcount]</div>
-
-<<button "There's more than one of that stamp!">>
-	<<if setup.checkForRepeats($stamps, $stamps[$stampcount])>>
-    	<<replace ".stamp-feedback">>That's right! There's more than one of that stamp<</replace>>
-    <<else>>
-    	<<replace ".stamp-feedback">>Not quite, there's only one of that stamp.<</replace>>
-    <</if>>
-<</button>>
-
-<<silently>>
-	<<repeat 3s>>
-    	<<replace ".stamp-feedback">><</replace>>
-		<<set $stampcount to $stampcount + 1>>
-		<<if $stampcount lt $stamps.length>>
-			<<replace ".stamp-container">>$stamps[$stampcount]<</replace>>
-		<<else>>
-			<<replace ".stamp-container">>Out of stamps<</replace>>
-			<<stop>>
-		<</if>>
-	<</repeat>>
-<</silently>>
-
-<<button "Next stamp">>
-	<<replace ".stamp-feedback">><</replace>>
-	<<if $stampcount lt $stamps.length-1>>
-      <<set $stampcount to $stampcount + 1>>
-      <<replace ".stamp-container">>$stamps[$stampcount]<</replace>>
-    <</if>>
-<</button>>
-<<button "Previous stamp">>
-	<<replace ".stamp-feedback">><</replace>>
-	<<if $stampcount gt 0>>
-      <<set $stampcount to $stampcount - 1>>
-      <<replace ".stamp-container">>$stamps[$stampcount]<</replace>>
-    <</if>>
-<</button>>
-
-<div class = "stamp-feedback">
 </div>
+<<button "Finish">><<goto "finish">><</button>></main>
 
-<<button "next">><<set $prevpass to $passage>><<goto "stampgamehard">><</button>>
+
+:: finish {"position":"450,50","size":"100,100"}
+<<set $passage to "finish">>
+
+<main >
+
+<p> goodbye message</p>
 </main>
 <<include "footer">>
-
-
-:: stampgamehard {"position":"450,550","size":"100,100"}
-<<set $passage to "stampgameeasy">>
-<<include "header">>
-<main>
-
-<<set $hardstampquestions = ['2x4','5+4','10-6','8+0']>>
-<<set $hardstampanswers = [8,9,4,8]>>
-<<set $hardstampcount to 0>>
-
-STAMP GAME - HARD
-Click the button if you see the same stamp twice.
-
-<div class="stamp-container">$hardstampquestions[$hardstampcount]</div>
-
-<<button "There's more than one of that stamp!">>
-	<<if setup.checkForRepeats($hardstampanswers, $hardstampanswers[$hardstampcount])>>
-    	<<replace ".stamp-feedback">>That's right! There's more than one of that stamp<</replace>>
-    <<else>>
-    	<<replace ".stamp-feedback">>Not quite, there's only one of that stamp.<</replace>>
-    <</if>>
-<</button>>
-
-<<silently>>
-	<<repeat 3s>>
-    	<<replace ".stamp-feedback">><</replace>>
-		<<set $hardstampcount to $hardstampcount + 1>>
-		<<if $hardstampcount lt $hardstampanswers.length>>
-			<<replace ".stamp-container">>$hardstampquestions[$hardstampcount]<</replace>>
-		<<else>>
-			<<replace ".stamp-container">>Out of stamps<</replace>>
-			<<stop>>
-		<</if>>
-	<</repeat>>
-<</silently>>
-
-<<button "Next stamp">>
-	<<replace ".stamp-feedback">><</replace>>
-	<<if $hardstampcount lt $hardstampquestions.length-1>>
-      <<set $hardstampcount to $hardstampcount + 1>>
-      <<replace ".stamp-container">>$hardstampquestions[$hardstampcount]<</replace>>
-    <</if>>
-<</button>>
-<<button "Previous stamp">>
-	<<replace ".stamp-feedback">><</replace>>
-	<<if $hardstampcount gt 0>>
-      <<set $hardstampcount to $hardstampcount - 1>>
-      <<replace ".stamp-container">>$hardstampquestions[$hardstampcount]<</replace>>
-    <</if>>
-<</button>>
-
-<div class = "stamp-feedback">
-</div>
-
-<<button "next">><<set $prevpass to $passage>><<goto "generatecodes">><</button>>
-</main>
-<<include "footer">>
-
-
-:: ghostdetector {"position":"450,225","size":"100,100"}
-<<set $passage to "badchoices">>
-<<include "header">>
-<main>
-
-  <div class = "detector">
-  <<set $spinning to false>>
  
-<<link "<img src = 'https://media3.giphy.com/media/1hpCPjWPnKpKLwAGIX/giphy.gif'>" >>
-	<<if $spinning>>
-    	<<set $spinning to false>>
-        <<audio ":all" stop>>
-		<<removeclass ".detector" "spinning">>
-    <<else>>
-   		<<set $spinning to true>>
-        <<audio "badjoke" play>>
-   	    <<addclass ".detector" "spinning">>
-    <</if>>
-<</link>> 
-</div>
- 
-</main>
-<<include "footer">>
+
 
 
