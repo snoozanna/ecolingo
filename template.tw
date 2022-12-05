@@ -202,7 +202,7 @@ body{
   font-family: "Space Grotesk";
   overflow:scroll;
   background:#235390;
-  background-image: url("./assets/img/stars.png");
+  background-image: url("https://youhavefoundconey.net/ecolingo/assets/img/stars.png");
   /* padding: 1.5rem */
   display:flex;
   flex-direction: column
@@ -400,7 +400,7 @@ main.game{
 
 .game-item.dictionary{
  width: 30%;
- background-image: url("./assets/img/paperbackground.jpg");
+ background-image: url("https://youhavefoundconey.net/ecolingo/assets/img/paperbackground.jpg");
  color: black;
  padding: 1rem;
  margin-inline-end: 4rem;
@@ -709,7 +709,7 @@ main.story{
   height: 100%
 }
 .paperold{
-background-image: url("./assets/img/paperbackground.jpg");
+background-image: url("https://youhavefoundconey.net/ecolingo/assets/img/paperbackground.jpg");
     width: 50vw;
     padding: 2rem;
     color: black;
@@ -835,7 +835,7 @@ setup.checkForRepeats = (array,element) => {
 
 
 :: header {"position":"100,225","size":"100,100"}
-<header><h1>e.co.lingo</h1><img class="spinning globe" src="./assets/img/earth.png" alt="a cartoon globe"></header>
+<header><h1>e.co.lingo</h1><img class="spinning globe" src="https://youhavefoundconey.net/ecolingo/assets/img/earth.png" alt="a cartoon globe"></header>
 
 
 :: footer {"position":"100,375","size":"100,100"}
@@ -872,7 +872,7 @@ setup.checkForRepeats = (array,element) => {
 <<set $passage to "landing">><<audio ":all" stop>>
 <<include "headerHome">>
 <main class="landing">
-<div class="landing-item"><img class="hero spinning" src="./assets/img/earth.png" alt="a cartoon globe"></div>
+<div class="landing-item"><img class="hero spinning" src="https://youhavefoundconey.net/ecolingo/assets/img/earth.png" alt="a cartoon globe"></div>
  <div class="landing-item">
     <p class="tagline">A fun, free and effective way to learn a climate language </p>
     <<button "Get Started">><<goto "pregame1">><</button>>
@@ -1221,11 +1221,11 @@ Connect the images to the words.
 <main class="game two"><<include "dictionary">>
 <div>
 <h2 class="question" id="question"> Which of these pictures is Trista?</h2>
-  <div class="pictures-wrapper"><<timed 1s>><div class="answer one"><<button [img["./assets/img/1.png"]]>><<timed 0.2s>><<addclass ".answer.one" "correct" >> <<replace "#question">>Correct! <</replace>><</timed>><<timed 2.5s>><<goto "game2b">><</timed>> <</button>></div><</timed>><<timed 2s>><div class="answer two"><<button [img["./assets/img/2.png"]]>>
+  <div class="pictures-wrapper"><<timed 1s>><div class="answer one"><<button [img["https://youhavefoundconey.net/ecolingo/assets/img/1.png"]]>><<timed 0.2s>><<addclass ".answer.one" "correct" >> <<replace "#question">>Correct! <</replace>><</timed>><<timed 2.5s>><<goto "game2b">><</timed>> <</button>></div><</timed>><<timed 2s>><div class="answer two"><<button [img["https://youhavefoundconey.net/ecolingo/assets/img/2.png"]]>>
    <<timed 0.2s>><<addclass ".answer.two" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
   <<timed 2.5s>><<removeclass ".answer.two" "wrong" >> <<replace "#question">> Which of these pictures is Trista?<</replace>><</timed>>
     <</button>></div><</timed>>
- <<timed 3s>><div class="answer three"><<button [img["./assets/img/3.png"]]>>
+ <<timed 3s>><div class="answer three"><<button [img["https://youhavefoundconey.net/ecolingo/assets/img/3.png"]]>>
 <<timed 0.2s>><<addclass ".answer.three" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
   <<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> Which of these pictures is Trista?<</replace>><</timed>>
     <</button>></div>
@@ -1241,11 +1241,11 @@ Connect the images to the words.
 :: game2b {"position":"600,300","size":"100,100"}
 <<set $passage to "game2b">><<include "header">><main class="game two" ><<include "dictionary">><div>
 <h2 class="question" id="question"> Which of these pictures is Naturro?</h2>
-  <div class="pictures-wrapper"><<timed 1s>><div class="answer one"><<button [img["./assets/img/4.png"]]>><<timed 0.2s>><<addclass ".answer.one" "correct" >> <<replace "#question">>Correct! <</replace>><</timed>><<timed 2.5s>><<goto "game2c">><</timed>> <</button>></div><</timed>><<timed 2s>><div class="answer two"><<button [img["./assets/img/5.png"]]>>
+  <div class="pictures-wrapper"><<timed 1s>><div class="answer one"><<button [img["https://youhavefoundconey.net/ecolingo/assets/img/4.png"]]>><<timed 0.2s>><<addclass ".answer.one" "correct" >> <<replace "#question">>Correct! <</replace>><</timed>><<timed 2.5s>><<goto "game2c">><</timed>> <</button>></div><</timed>><<timed 2s>><div class="answer two"><<button [img["https://youhavefoundconey.net/ecolingo/assets/img/5.png"]]>>
    <<timed 0.2s>><<addclass ".answer.two" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
   <<timed 2.5s>><<removeclass ".answer.two" "wrong" >> <<replace "#question">> Which of these pictures is Naturro?<</replace>><</timed>>
     <</button>></div><</timed>>
- <<timed 3s>><div class="answer three"><<button [img["./assets/img/6.png"]]>>
+ <<timed 3s>><div class="answer three"><<button [img["https://youhavefoundconey.net/ecolingo/assets/img/6.png"]]>>
 <<timed 0.2s>><<addclass ".answer.three" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
   <<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> Which of these pictures is Naturro?<</replace>><</timed>>
     <</button>></div>
@@ -1259,12 +1259,12 @@ Connect the images to the words.
 :: game2c {"position":"750,300","size":"100,100"}
 <<set $passage to "game2c">><<include "header">><main class="game two" ><<include "dictionary">><div>
 <h2 class="question" id="question"> Which of these pictures is Klibli?</h2>
-  <div class="pictures-wrapper"><<timed 1s>><div class="answer one"><<button [img["./assets/img/7.png"]]>><<timed 0.2s>><<addclass ".answer.one" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
-  <<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> Which of these pictures is Klibli?<</replace>><</timed>> <</button>></div><</timed>><<timed 2s>><div class="answer two"><<button [img["./assets/img/8.png"]]>>
+  <div class="pictures-wrapper"><<timed 1s>><div class="answer one"><<button [img["https://youhavefoundconey.net/ecolingo/assets/img/7.png"]]>><<timed 0.2s>><<addclass ".answer.one" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
+  <<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> Which of these pictures is Klibli?<</replace>><</timed>> <</button>></div><</timed>><<timed 2s>><div class="answer two"><<button [img["https://youhavefoundconey.net/ecolingo/assets/img/8.png"]]>>
    <<timed 0.2s>><<addclass ".answer.two" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
   <<timed 2.5s>><<removeclass ".answer.two" "wrong" >> <<replace "#question">> Which of these pictures is Klibli?<</replace>><</timed>>
     <</button>></div><</timed>>
- <<timed 3s>><div class="answer three"><<button [img["./assets/img/9.png"]]>>
+ <<timed 3s>><div class="answer three"><<button [img["https://youhavefoundconey.net/ecolingo/assets/img/9.png"]]>>
  <<timed 0.2s>><<addclass ".answer.three" "correct" >> <<replace "#question">>Correct! <</replace>><</timed>><<timed 2.5s>><<goto "story2">><</timed>>
     <</button>></div>
  <</timed>>
