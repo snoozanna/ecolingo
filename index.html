@@ -553,10 +553,29 @@ justify-content: space-between;}
   width:100%
 }
 
-.pictures-item{
+.pictures-wrapper > span > {
   width: 30%;
   max-width: 300px
   
+}
+
+.answer > button  {
+  max-width: 80%;
+  background:none;
+  padding: 0;
+  box-shadow:none
+}
+
+.pictures-wrapper > span > img{
+   width: 80%; 
+}
+
+.wrong > button > img{
+  border: solid 5px red
+}
+
+.correct > button > img{
+border: solid 5px var(--green)
 }
 
 /* GAME THREE  */
@@ -876,8 +895,11 @@ setup.checkForRepeats = (array,element) => {
  const arrayCopy = [...array];
  const duplicates = arrayCopy.filter((item, index) => index !== arrayCopy.indexOf(item));
  return duplicates.contains(element)
-}</script><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">/* &lt;&lt;cacheaudio &quot;badjoke&quot; &quot;https://youhavefoundconey.net/CG/what/assets/audio/badjoke.mp3&quot;&gt;&gt;
-&lt;&lt;waitforaudio&gt;&gt;  */
+}</script><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;story1.mp3&quot; &quot;https://youhavefoundconey.net/ecolingo/assets/audio/story1.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;story2.mp3&quot; &quot;https://youhavefoundconey.net/ecolingo/assets/audio/story2.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;story3.mp3&quot; &quot;https://youhavefoundconey.net/ecolingo/assets/audio/story3.mp3&quot;&gt;&gt;
+&lt;&lt;cacheaudio &quot;story4.mp3&quot; &quot;https://youhavefoundconey.net/ecolingo/assets/audio/story4.mp3&quot;&gt;&gt;
+&lt;&lt;waitforaudio&gt;&gt; 
 &lt;&lt;set $pagetitle to &quot;Round 1&quot;&gt;&gt;
 &lt;&lt;set $roundone to false&gt;&gt;
 &lt;&lt;set $roundtwo to false&gt;&gt;
@@ -900,7 +922,7 @@ setup.checkForRepeats = (array,element) => {
         &lt;&lt;button &quot;story four&quot;&gt;&gt;&lt;&lt;goto &quot;story4&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
   
   &lt;/div&gt; 
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="7" name="landing" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="7" name="landing" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;include &quot;headerHome&quot;&gt;&gt;
 &lt;main class=&quot;landing&quot;&gt;
 &lt;div class=&quot;landing-item&quot;&gt;&lt;img class=&quot;hero spinning&quot; src=&quot;./assets/img/earth.png&quot; alt=&quot;a cartoon globe&quot;&gt;&lt;/div&gt;
@@ -908,7 +930,7 @@ setup.checkForRepeats = (array,element) => {
     &lt;p class=&quot;tagline&quot;&gt;A fun, free and effective way to learn a climate language &lt;/p&gt;
     &lt;&lt;button &quot;Get Started&quot;&gt;&gt;&lt;&lt;goto &quot;pregame1&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
  &lt;/div&gt;
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="8" name="pregame1" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;pregame1&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="8" name="pregame1" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;pregame1&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;main class=&quot;pregame&quot; &gt;
     &lt;p&gt;Welcome to today’s learning. 
 Let’s build our Dictionary together. 
@@ -916,7 +938,7 @@ Answer the questions to build the Dictionary.
 &lt;/p&gt;
     &lt;&lt;button &quot;I&#39;m ready&quot;&gt;&gt;&lt;&lt;goto &quot;game1a&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="9" name="game1a" tags="" position="400,100" size="100,100">&lt;&lt;set $passage to &quot;game1a&quot;&gt;&gt;
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="9" name="game1a" tags="" position="400,100" size="100,100">&lt;&lt;set $passage to &quot;game1a&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;set $dictionary to []&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
@@ -938,7 +960,7 @@ Answer the questions to build the Dictionary.
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="game1b" tags="" position="550,100" size="100,100">&lt;&lt;set $passage to &quot;game1b&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="game1b" tags="" position="550,100" size="100,100">&lt;&lt;set $passage to &quot;game1b&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;game-wrapper&quot;&gt;
@@ -963,7 +985,7 @@ Answer the questions to build the Dictionary.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="game1c" tags="" position="700,100" size="100,100">&lt;&lt;set $passage to &quot;game1c&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="game1c" tags="" position="700,100" size="100,100">&lt;&lt;set $passage to &quot;game1c&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;game-wrapper&quot;&gt;
@@ -988,7 +1010,7 @@ Answer the questions to build the Dictionary.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="game1d" tags="" position="850,100" size="100,100">&lt;&lt;set $passage to &quot;game1d&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="game1d" tags="" position="850,100" size="100,100">&lt;&lt;set $passage to &quot;game1d&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;game-wrapper&quot;&gt;
@@ -1013,7 +1035,7 @@ Answer the questions to build the Dictionary.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="game1e" tags="" position="1000,100" size="100,100">&lt;&lt;set $passage to &quot;game1e&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="game1e" tags="" position="1000,100" size="100,100">&lt;&lt;set $passage to &quot;game1e&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;game-wrapper&quot;&gt;
@@ -1040,7 +1062,7 @@ Answer the questions to build the Dictionary.
 &lt;/div&gt;
 &lt;/main&gt;
 &lt;&lt;include &quot;footer&quot;&gt;&gt;
-&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game1d&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="game1f" tags="" position="1150,100" size="100,100">&lt;&lt;set $passage to &quot;game1f&quot;&gt;&gt;
+&lt;&lt;button &quot;back&quot;&gt;&gt;&lt;&lt;goto &quot;game1d&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="game1f" tags="" position="1150,100" size="100,100">&lt;&lt;set $passage to &quot;game1f&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;game-wrapper&quot;&gt;
@@ -1068,7 +1090,7 @@ Answer the questions to build the Dictionary.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="game1g" tags="" position="1300,100" size="100,100">&lt;&lt;set $passage to &quot;game1g&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="game1g" tags="" position="1300,100" size="100,100">&lt;&lt;set $passage to &quot;game1g&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;game-wrapper&quot;&gt;
@@ -1098,7 +1120,7 @@ Answer the questions to build the Dictionary.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="game1h" tags="" position="1450,100" size="100,100">&lt;&lt;set $passage to &quot;game1h&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="game1h" tags="" position="1450,100" size="100,100">&lt;&lt;set $passage to &quot;game1h&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;game-wrapper&quot;&gt;
@@ -1122,7 +1144,7 @@ Answer the questions to build the Dictionary.
 &lt;/ul&gt;
 &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="game1i" tags="" position="1600,100" size="100,100">&lt;&lt;set $passage to &quot;game1i&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="game1i" tags="" position="1600,100" size="100,100">&lt;&lt;set $passage to &quot;game1i&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;game-wrapper&quot;&gt;
@@ -1146,7 +1168,7 @@ Answer the questions to build the Dictionary.
 &lt;/ul&gt;
 &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="game1j" tags="" position="1750,100" size="100,100">&lt;&lt;set $passage to &quot;game1j&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="game1j" tags="" position="1750,100" size="100,100">&lt;&lt;set $passage to &quot;game1j&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main class=&quot;game one&quot; &gt;
 &lt;div class=&quot;game-wrapper&quot;&gt;
@@ -1172,7 +1194,7 @@ Answer the questions to build the Dictionary.
 &lt;/ul&gt;
 &lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="story1" tags="" position="500,900" size="100,100">&lt;&lt;set $passage to &quot;story1&quot;&gt;&gt;&lt;&lt;set $roundone to true&gt;&gt;&lt;main class=&quot;story&quot;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="story1" tags="" position="500,900" size="100,100">&lt;&lt;set $passage to &quot;story1&quot;&gt;&gt;&lt;&lt;set $roundone to true&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;story1&quot; play&gt;&gt;&lt;main class=&quot;story&quot;&gt;
 &lt;div class=&quot;paperold&quot;&gt;&lt;p&gt;  Professor Arthur W. Galston stands in the dark sidelines of the stage, out in the light he’ll be delivering the biggest speech of his career. 
   He peeks out at the audiences shuffling in their seats, awaiting his words. 
   Washington, a city of influence, is the location for this year&#39;s Conference on War and National Responsibility, and he is the keynote. 
@@ -1187,79 +1209,60 @@ Answer the questions to build the Dictionary.
   Ecocide
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;&lt;button &quot;Round Two&quot;&gt;&gt;&lt;&lt;goto &quot;pregame2&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="20" name="pregame2" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;pregame2&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;&lt;button &quot;Round Two&quot;&gt;&gt;&lt;&lt;goto &quot;pregame2&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="20" name="pregame2" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;pregame2&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;main class=&quot;pregame&quot; &gt;
     &lt;p&gt;Let’s learn through images. 
 Connect the images to the words. 
 &lt;/p&gt;
     &lt;&lt;button &quot;I&#39;m ready&quot;&gt;&gt;&lt;&lt;goto &quot;game2a&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="21" name="game2a" tags="" position="400,300" size="100,100">&lt;&lt;set $passage to &quot;game2a&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;main class=&quot;game two&quot;&gt;&lt;&lt;include &quot;dictionary&quot;&gt;&gt;&lt;div&gt;
-&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; What can you see?&lt;/h2&gt;
-  &lt;div class=&quot;pictures-wrapper&quot;&gt;&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/1.png&quot; alt=&quot;&quot;&gt;
-  &lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/2.png&quot; alt=&quot;&quot;&gt;
-  &lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/3.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;answers&quot;&gt;
-  &lt;ul&gt;
-  &lt;li class=&quot;answer one&quot;&gt;&lt;&lt;button &quot;Trista&quot;&gt;&gt; &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.one&quot; &quot;correct&quot; &gt;&gt; 
-  &lt;&lt;replace &quot;#question&quot;&gt;&gt;Correct! &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-  &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;goto &quot;game2b&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt; 
-  &lt;&lt;/button&gt;&gt;&lt;/li&gt;
-  &lt;li class=&quot;answer two&quot;&gt;&lt;&lt;button &quot;Groundrelief&quot;&gt;&gt;
-  &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-  &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-  &lt;&lt;/button&gt;&gt;&lt;/li&gt;
-  &lt;li class=&quot;answer three&quot;&gt;&lt;&lt;button &quot;Shellkin &quot;&gt;&gt;&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt;&lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt; &lt;&lt;/timed&gt;&gt;
-  &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-  &lt;&lt;/button&gt;&gt;&lt;/li&gt;&lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="game2b" tags="" position="600,300" size="100,100">&lt;&lt;set $passage to &quot;game2a&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;main class=&quot;game two&quot; &gt;&lt;&lt;include &quot;dictionary&quot;&gt;&gt;&lt;div&gt;
-&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; What can you see?&lt;/h2&gt;
-&lt;div class=&quot;pictures-wrapper&quot;&gt;&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/4.png&quot; alt=&quot;&quot;&gt;
-&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/5.png&quot; alt=&quot;&quot;&gt;
-&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/6.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;answers&quot;&gt;&lt;ul&gt;
-&lt;li class=&quot;answer one&quot;&gt;&lt;&lt;button &quot;F.O.M.E&quot;&gt;&gt;
-&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.one&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.one&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;/button&gt;&gt;&lt;/li&gt;
-&lt;li class=&quot;answer two&quot;&gt;&lt;&lt;button &quot;Naturro&quot;&gt;&gt; &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.two&quot; &quot;correct&quot; &gt;&gt; 
-&lt;&lt;replace &quot;#question&quot;&gt;&gt;Correct! &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;goto &quot;game2c&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt; 
-&lt;&lt;/button&gt;&gt;&lt;/li&gt;
-&lt;li class=&quot;answer three&quot;&gt;&lt;&lt;button &quot;Klibli&quot;&gt;&gt;&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt;&lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt; &lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;/button&gt;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="game2c" tags="" position="750,300" size="100,100">&lt;&lt;set $passage to &quot;game2a&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;main class=&quot;game two&quot; &gt;&lt;&lt;include &quot;dictionary&quot;&gt;&gt;&lt;div&gt;&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; What can you see?&lt;/h2&gt;
-&lt;div class=&quot;pictures-wrapper&quot;&gt;&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/7.png&quot; alt=&quot;&quot;&gt;
-&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/8.png&quot; alt=&quot;&quot;&gt;
-&lt;img class=&quot;pictures-item&quot; src=&quot;./assets/img/9.png&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
-&lt;div class=&quot;answers&quot;&gt;
-&lt;ul&gt;
-&lt;li class=&quot;answer one&quot;&gt;&lt;&lt;button &quot;Climecrime&quot;&gt;&gt;
-&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.one&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.one&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;/button&gt;&gt;&lt;/li&gt;
-&lt;li class=&quot;answer two&quot;&gt;&lt;&lt;button &quot;Climobstinate&quot;&gt;&gt;&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt;&lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt; &lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; What can you see?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;/button&gt;&gt;&lt;/li&gt;
-&lt;li class=&quot;answer three&quot;&gt;&lt;&lt;button &quot;Klibli&quot;&gt;&gt; &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.three&quot; &quot;correct&quot; &gt;&gt; 
-&lt;&lt;replace &quot;#question&quot;&gt;&gt;Correct! &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
-&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;goto &quot;story2&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt; 
-&lt;&lt;/button&gt;&gt;&lt;/li&gt;
+&lt;/main&gt;</tw-passagedata><tw-passagedata pid="21" name="game2a" tags="" position="400,300" size="100,100">&lt;&lt;set $passage to &quot;game2a&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;main class=&quot;game two&quot;&gt;&lt;&lt;include &quot;dictionary&quot;&gt;&gt;
+&lt;div&gt;
+&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; Which of these pictures is Trista?&lt;/h2&gt;
+  &lt;div class=&quot;pictures-wrapper&quot;&gt;&lt;&lt;timed 1s&gt;&gt;&lt;div class=&quot;answer one&quot;&gt;&lt;&lt;button [img[&quot;./assets/img/1.png&quot;]]&gt;&gt;&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.one&quot; &quot;correct&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Correct! &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;goto &quot;game2b&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt; &lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;timed 2s&gt;&gt;&lt;div class=&quot;answer two&quot;&gt;&lt;&lt;button [img[&quot;./assets/img/2.png&quot;]]&gt;&gt;
+   &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+  &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; Which of these pictures is Trista?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/timed&gt;&gt;
+ &lt;&lt;timed 3s&gt;&gt;&lt;div class=&quot;answer three&quot;&gt;&lt;&lt;button [img[&quot;./assets/img/3.png&quot;]]&gt;&gt;
+&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt;&lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt; &lt;&lt;/timed&gt;&gt;
+  &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; Which of these pictures is Trista?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&lt;/div&gt;
+ &lt;&lt;/timed&gt;&gt;
 
-&lt;/ul&gt;
+
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/main&gt;
-
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="story2" tags="" position="625,900" size="100,100">&lt;&lt;set $passage to &quot;story1&quot;&gt;&gt;&lt;&lt;set $roundtwo to true&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="game2b" tags="" position="600,300" size="100,100">&lt;&lt;set $passage to &quot;game2b&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;main class=&quot;game two&quot; &gt;&lt;&lt;include &quot;dictionary&quot;&gt;&gt;&lt;div&gt;
+&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; Which of these pictures is Naturro?&lt;/h2&gt;
+  &lt;div class=&quot;pictures-wrapper&quot;&gt;&lt;&lt;timed 1s&gt;&gt;&lt;div class=&quot;answer one&quot;&gt;&lt;&lt;button [img[&quot;./assets/img/4.png&quot;]]&gt;&gt;&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.one&quot; &quot;correct&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Correct! &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;goto &quot;game2c&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt; &lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;timed 2s&gt;&gt;&lt;div class=&quot;answer two&quot;&gt;&lt;&lt;button [img[&quot;./assets/img/5.png&quot;]]&gt;&gt;
+   &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+  &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; Which of these pictures is Naturro?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/timed&gt;&gt;
+ &lt;&lt;timed 3s&gt;&gt;&lt;div class=&quot;answer three&quot;&gt;&lt;&lt;button [img[&quot;./assets/img/6.png&quot;]]&gt;&gt;
+&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt;&lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt; &lt;&lt;/timed&gt;&gt;
+  &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; Which of these pictures is Naturro?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&lt;/div&gt;
+ &lt;&lt;/timed&gt;&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/main&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="game2c" tags="" position="750,300" size="100,100">&lt;&lt;set $passage to &quot;game2c&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;main class=&quot;game two&quot; &gt;&lt;&lt;include &quot;dictionary&quot;&gt;&gt;&lt;div&gt;
+&lt;h2 class=&quot;question&quot; id=&quot;question&quot;&gt; Which of these pictures is Klibli?&lt;/h2&gt;
+  &lt;div class=&quot;pictures-wrapper&quot;&gt;&lt;&lt;timed 1s&gt;&gt;&lt;div class=&quot;answer one&quot;&gt;&lt;&lt;button [img[&quot;./assets/img/7.png&quot;]]&gt;&gt;&lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.one&quot; &quot;wrong&quot; &gt;&gt;&lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt; &lt;&lt;/timed&gt;&gt;
+  &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.three&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; Which of these pictures is Klibli?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt; &lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;timed 2s&gt;&gt;&lt;div class=&quot;answer two&quot;&gt;&lt;&lt;button [img[&quot;./assets/img/8.png&quot;]]&gt;&gt;
+   &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Wrong answer, try again... &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+  &lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;removeclass &quot;.answer.two&quot; &quot;wrong&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt; Which of these pictures is Klibli?&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;&lt;/timed&gt;&gt;
+ &lt;&lt;timed 3s&gt;&gt;&lt;div class=&quot;answer three&quot;&gt;&lt;&lt;button [img[&quot;./assets/img/9.png&quot;]]&gt;&gt;
+ &lt;&lt;timed 0.2s&gt;&gt;&lt;&lt;addclass &quot;.answer.three&quot; &quot;correct&quot; &gt;&gt; &lt;&lt;replace &quot;#question&quot;&gt;&gt;Correct! &lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;&lt;&lt;timed 2.5s&gt;&gt;&lt;&lt;goto &quot;story2&quot;&gt;&gt;&lt;&lt;/timed&gt;&gt;
+    &lt;&lt;/button&gt;&gt;&lt;/div&gt;
+ &lt;&lt;/timed&gt;&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/main&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="story2" tags="" position="625,900" size="100,100">&lt;&lt;set $passage to &quot;story1&quot;&gt;&gt;&lt;&lt;set $roundtwo to true&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;story2&quot; play&gt;&gt;
 
 &lt;main class=&quot;story&quot;&gt;
 &lt;div class=&quot;paperold&quot;&gt;Two years after Professor Galston has used the word for the first time, Swedish Prime Minister Olof Palme sits down for Fika in his office. 
@@ -1283,7 +1286,7 @@ Fika is over.
 Back to work. 
 
 &lt;/div&gt;
-&lt;&lt;button &quot;Round Three&quot;&gt;&gt;&lt;&lt;goto &quot;pregame3&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="25" name="pregame3" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;pregame3&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;&lt;button &quot;Round Three&quot;&gt;&gt;&lt;&lt;goto &quot;pregame3&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="25" name="pregame3" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;pregame3&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;main class=&quot;pregame&quot; &gt;
     &lt;p&gt;You’re doing really well today. 
 That’s 50% of your daily target. 
@@ -1641,7 +1644,7 @@ And how you can use the words fluently.
 &lt;/div&gt;
 &lt;/main&gt;
 
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="story3" tags="" position="775,900" size="100,100">&lt;&lt;set $passage to &quot;story3&quot;&gt;&gt;&lt;&lt;set $roundthree to true&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="story3" tags="" position="775,900" size="100,100">&lt;&lt;set $passage to &quot;story3&quot;&gt;&gt;&lt;&lt;set $roundthree to true&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;story3&quot; play&gt;&gt;
 
 &lt;main class=&quot;story&quot;&gt;
 &lt;div class=&quot;paperold&quot;&gt;Polly Higgins knows she is reaching the end of her life. The doctors have told her it won’t be long and she should prepare. 
@@ -1657,7 +1660,7 @@ Six months after her life ended, It was this definition that Pope Francis referr
 
 
 &lt;/div&gt;
-&lt;&lt;button &quot;Round Four&quot;&gt;&gt;&lt;&lt;goto &quot;pregame4&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="30" name="pregame4" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;pregame4&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;&lt;button &quot;Round Four&quot;&gt;&gt;&lt;&lt;goto &quot;pregame4&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="30" name="pregame4" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;pregame4&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;main class=&quot;pregame&quot; &gt;
     &lt;p&gt;The key to learning new words is trying them out in different ways
 Your last challenge for today is to try out your new ecolingo
@@ -1689,7 +1692,7 @@ Let’s see if you can use the words using your voice.
 After years of experimentation and studying, Basel has established himself as one of the forefront Palestinian experts working on hydroponics, having published an academic paper about the technique and soilless culture.
 
 As with any expert pioneering a field of study, Basel’s business journey was wrought with challenges. Palestinian farmers were skeptical of the agricultural alternative, and investors even more so. Explaining the theory of hydroponics to farmers was not working, and so when Basel graduated in 2015, he opened his own farm in order to lead by example. Today it is registered as a private limited company sharing solutions worldwide.
-&lt;/p&gt;</tw-passagedata><tw-passagedata pid="33" name="story4" tags="" position="900,900" size="100,100">&lt;&lt;set $passage to &quot;story4&quot;&gt;&gt;&lt;&lt;set $roundfour to true&gt;&gt;&lt;main class=&quot;story&quot;&gt;
+&lt;/p&gt;</tw-passagedata><tw-passagedata pid="33" name="story4" tags="" position="900,900" size="100,100">&lt;&lt;set $passage to &quot;story4&quot;&gt;&gt;&lt;&lt;set $roundfour to true&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;&lt;&lt;audio &quot;story4&quot; play&gt;&gt;&lt;main class=&quot;story&quot;&gt;
 &lt;div class=&quot;paperold&quot;&gt;It is June 2021 and Dior Fall Sow begins to let others in from the waiting room; she has begun to get the hang of Zoom, just as their final session arrives. 
 
 She begins by checking in with everyone to see how COVID is impacting their daily lives, before getting on with the meeting agenda. 
@@ -1713,7 +1716,7 @@ The power of a word can shape our future.
 
 
 &lt;/div&gt;
-&lt;&lt;button &quot;Finish&quot;&gt;&gt;&lt;&lt;goto &quot;finish&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="34" name="finish" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;finish&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;&lt;button &quot;Finish&quot;&gt;&gt;&lt;&lt;goto &quot;finish&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/main&gt;</tw-passagedata><tw-passagedata pid="34" name="finish" tags="" position="100,650" size="100,100">&lt;&lt;set $passage to &quot;finish&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;&lt;&lt;audio &quot;:all&quot; stop&gt;&gt;
 &lt;main class=&quot;pregame&quot; &gt;
     &lt;p&gt;Thank you for learning with us today
 Tomorrow is another day
@@ -1721,7 +1724,7 @@ And there our new words to learn
 Keep using the words you have learnt
 We’ll see you soon for more ecolingo. 
 &lt;/p&gt;
-    &lt;&lt;button &quot;I&#39;m ready&quot;&gt;&gt;&lt;&lt;goto &quot;game3a&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+
 
 &lt;/main&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
