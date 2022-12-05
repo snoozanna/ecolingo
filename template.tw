@@ -221,7 +221,7 @@ header > img.globe{
 
 main{
    padding: 2rem;
-   margin-block-end: 4rem;
+   margin-block-end: 13rem;
 
 }
 
@@ -306,47 +306,12 @@ margin-inline-end: 10px;
 margin-block-end: 10px
 }
 
-.door-container{
-  display:flex;
-  flex-direction: row;
-justify-content: space-around;
-  align-items:center;
-  text-align: right;
-}
-
-.door-item{
-  display:flex;
-  flex-direction:column
-}
-
-.door-item > button > img {
-  max-width: 7rem
-}
-
-.door-item > span {
-  text-align: center
-}
 
 textarea{
   min-width: 60vw
 }
 
-.wordcontainer{
-  display:flex;
-  flex-direction: row;
-}
 
-.letter-item > input[type=text]{
-    min-width: 2em;
-  	max-width: 2em;
-  	margin-inline-end:10px;
-}
-
-.letter-item > .correct-letter{
-  min-width: 2em;
-  	max-width: 2em;
-  	margin-inline-end:10px;
-}
 
 
 
@@ -405,6 +370,21 @@ button{
   font-weight: 900
 }
 
+/* PREGAME  */
+
+main.pregame{
+  display: flex;
+  justify-content: center;
+  flex-direction:column;
+  align-items: center
+}
+
+main.pregame > p{
+text-align: center;
+font-size: 2.5rem
+}
+
+
 /* GAME ONE  */
 
 main.game{
@@ -422,7 +402,8 @@ main.game{
  width: 30%;
  background-image: url("./assets/img/paperbackground.jpg");
  color: black;
- padding: 1rem
+ padding: 1rem;
+ margin-inline-end: 4rem;
 }
 
 .game-item.dictionary > h3{
@@ -473,9 +454,10 @@ max-width: 33%
 }
 
 /* GAME TWO  */
-main.game.two{flex-direction: column}
+main.game.two{flex-direction: row;
+justify-content: space-between;}
 
-.game.two > .question{
+.game.two > div > .question{
   text-align: center
 }
 
@@ -493,12 +475,29 @@ main.game.two{flex-direction: column}
 }
 
 /* GAME THREE  */
-main.game.three{flex-direction: column;
-  justify-content: center;
+
+main.game.three{
+  flex-direction: row;
+  justify-content:  space-between;
   align-items: center;}
+
+  /* main.game.two{flex-direction: row;
+justify-content: space-between;}
+
+.game.two > div > .question{
+  text-align: center
+} */
 
 main.game.three > h2{
   margin-bottom:0
+}
+
+.chat-wrapper{
+  width: 70%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
 }
 .chat-container{
   border: solid var(--offwhite) 2px;
@@ -506,7 +505,7 @@ main.game.three > h2{
     background: var(--offwhite) ;
       border-width: 2px;
       border-radius: 10px;
-  width: 50%;
+  width: 100%;  
         height: 300px;
   padding: 2rem;
   display: flex;
@@ -644,29 +643,40 @@ align-self:flex-end
 
 
   /* GAME FOUR  */
-main.game.four{flex-direction: column;
-  justify-content: center;
-  align-items: center;}
-
+main.game.four{ flex-direction: row;
+  justify-content:  space-between;
+  align-items: flex-start;
+}
 main.game.four > p > button {
   padding:1rem
+}
+
+.record-container{
+ width: 70%
 }
 
 .record-wrapper{
   display:flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 80%;
+  width: 100%;
+
 }  
 
 .record-item {
-  width:49%
+  width:55%
+}
+
+.record-item > iframe{
+margin-block-end:2rem
 }
 
 .record-item.speakpipe {
   width:30%;
   display:flex;
-  flex-direction: column
+  flex-direction: column;
+    justify-content: center;
+      align-items: center;
 }
 
 
@@ -815,17 +825,8 @@ setup.checkForRepeats = (array,element) => {
  <<if $roundfour is true>> <div class="round-marker complete" id="marker4"><<button "4">><<goto "game4a">><</button>></div><<else>><div class="round-marker" id="marker4">4</div><</if>></div></footer>
 
 
-:: lost {"position":"100,1050","size":"100,100"}
-<<set $passage to "lost">><<include "header">>
-<main>
-Sorry to hear that you're lost! 
-You have two options:
-
-<<button "Begin the adventure again">><<goto "landing">><</button>>
-
-<<button "Take me straight to the end location!">><<goto "end">><</button>>
-</main>
-<<include "footer">>
+:: dictionary
+<div class="dictionary game-item"><h3>Dictionary</h3><<print $dictionary>></div>
 
 
 :: menu {"position":"100,500","size":"100,100"}
@@ -852,10 +853,21 @@ You have two options:
 <div class="landing-item"><img class="hero spinning" src="./assets/img/earth.png" alt="a cartoon globe"></div>
  <div class="landing-item">
     <p class="tagline">A fun, free and effective way to learn a climate language </p>
-    <<button "Get Started">><<goto "game1a">><</button>>
+    <<button "Get Started">><<goto "pregame1">><</button>>
  </div>
 </main>
 
+
+:: pregame1 {"position":"100,650","size":"100,100"}
+<<set $passage to "pregame1">><<include "header">>
+<main class="pregame" >
+    <p>Welcome to today’s learning. 
+Let’s build our Dictionary together. 
+Answer the questions to build the Dictionary.
+</p>
+    <<button "I'm ready">><<goto "game1a">><</button>>
+
+</main>
 
 :: game1a {"position":"400,100","size":"100,100"}
 <<set $passage to "game1a">>
@@ -1169,33 +1181,47 @@ You have two options:
   Ecocide
 </p>
 </div>
-<<button "Round Two">><<goto "game2a">><</button>></main>
+<<button "Round Two">><<goto "pregame2">><</button>></main>
+
+:: pregame2 {"position":"100,650","size":"100,100"}
+<<set $passage to "pregame2">><<include "header">>
+<main class="pregame" >
+    <p>Let’s learn through images. 
+Connect the images to the words. 
+</p>
+    <<button "I'm ready">><<goto "game2a">><</button>>
+
+</main>
 
 
 :: game2a {"position":"400,300","size":"100,100"}
-<<set $passage to "game2a">><<include "header">><main class="game two" ><h2 class="question" id="question"> What can you see?</h2>
-<div class="pictures-wrapper"><img class="pictures-item" src="./assets/img/1.png" alt="">
-<img class="pictures-item" src="./assets/img/2.png" alt="">
-<img class="pictures-item" src="./assets/img/3.png" alt=""></div>
-<div class="answers">
-<ul>
-<li class="answer one"><<button "Trista">> <<timed 0.2s>><<addclass ".answer.one" "correct" >> 
-<<replace "#question">>Correct! <</replace>><</timed>>
-<<timed 2.5s>><<goto "game2b">><</timed>> 
-<</button>></li>
-<li class="answer two"><<button "Groundrelief">>
-<<timed 0.2s>><<addclass ".answer.two" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
-<<timed 2.5s>><<removeclass ".answer.two" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
-<</button>></li>
-<li class="answer three"><<button "Shellkin ">><<timed 0.2s>><<addclass ".answer.three" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
-<<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
-<</button>></li></ul>
-</div></main>
+<<set $passage to "game2a">><<include "header">><main class="game two"><<include "dictionary">><div>
+<h2 class="question" id="question"> What can you see?</h2>
+  <div class="pictures-wrapper"><img class="pictures-item" src="./assets/img/1.png" alt="">
+  <img class="pictures-item" src="./assets/img/2.png" alt="">
+  <img class="pictures-item" src="./assets/img/3.png" alt=""></div>
+  <div class="answers">
+  <ul>
+  <li class="answer one"><<button "Trista">> <<timed 0.2s>><<addclass ".answer.one" "correct" >> 
+  <<replace "#question">>Correct! <</replace>><</timed>>
+  <<timed 2.5s>><<goto "game2b">><</timed>> 
+  <</button>></li>
+  <li class="answer two"><<button "Groundrelief">>
+  <<timed 0.2s>><<addclass ".answer.two" "wrong" >> <<replace "#question">>Wrong answer, try again... <</replace>><</timed>>
+  <<timed 2.5s>><<removeclass ".answer.two" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
+  <</button>></li>
+  <li class="answer three"><<button "Shellkin ">><<timed 0.2s>><<addclass ".answer.three" "wrong" >><<replace "#question">>Wrong answer, try again... <</replace>> <</timed>>
+  <<timed 2.5s>><<removeclass ".answer.three" "wrong" >> <<replace "#question">> What can you see?<</replace>><</timed>>
+  <</button>></li></ul>
+  </div>
+</div>
+</main>
 <<include "footer">>
 
 
 :: game2b {"position":"600,300","size":"100,100"}
-<<set $passage to "game2a">><<include "header">><main class="game two" ><h2 class="question" id="question"> What can you see?</h2>
+<<set $passage to "game2a">><<include "header">><main class="game two" ><<include "dictionary">><div>
+<h2 class="question" id="question"> What can you see?</h2>
 <div class="pictures-wrapper"><img class="pictures-item" src="./assets/img/4.png" alt="">
 <img class="pictures-item" src="./assets/img/5.png" alt="">
 <img class="pictures-item" src="./assets/img/6.png" alt=""></div>
@@ -1213,14 +1239,13 @@ You have two options:
 <</button>></li>
 </ul>
 </div>
-
+</div>
 </main>
-
 <<include "footer">>
 
 
 :: game2c {"position":"750,300","size":"100,100"}
-<<set $passage to "game2a">><<include "header">><main class="game two" ><h2 class="question" id="question"> What can you see?</h2>
+<<set $passage to "game2a">><<include "header">><main class="game two" ><<include "dictionary">><div><h2 class="question" id="question"> What can you see?</h2>
 <div class="pictures-wrapper"><img class="pictures-item" src="./assets/img/7.png" alt="">
 <img class="pictures-item" src="./assets/img/8.png" alt="">
 <img class="pictures-item" src="./assets/img/9.png" alt=""></div>
@@ -1239,6 +1264,7 @@ You have two options:
 <</button>></li>
 
 </ul>
+</div>
 </div>
 </main>
 
@@ -1270,18 +1296,31 @@ Fika is over.
 Back to work. 
 
 </div>
-<<button "Round Three">><<goto "game3a">><</button>></main>
+<<button "Round Three">><<goto "pregame3">><</button>></main>
+
+:: pregame3 {"position":"100,650","size":"100,100"}
+<<set $passage to "pregame3">><<include "header">>
+<main class="pregame" >
+    <p>You’re doing really well today. 
+That’s 50% of your daily target. 
+Let’s try conversations now
+And how you can use the words fluently. 
+
+</p>
+    <<button "I'm ready">><<goto "game3a">><</button>>
+
+</main>
 
 
 :: game3a {"position":"400,500","size":"100,100"}
-<<set $passage to "game3a">><<include "header">><main class="game three"><h2> Complete the Chat </h2>
-<div class="chat-container">
-<div class="message game"><p>Do you have any shellkins?</p></div>
-<div class="message player hide" id="player"></div>
-<div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
-   </div>
-</div>
-<div class="chat-options">
+<<set $passage to "game3a">><<include "header">><main class="game three"><<include "dictionary">>
+<div class="chat-wrapper"><h2> Complete the Chat </h2>
+  <div class="chat-container">
+  <div class="message game"><p>Do you have any shellkins?</p></div>
+  <div class="message player hide" id="player"></div>
+  <div class="message game typing hide" id="typing"><div class="is-typing"><div class="jump1"></div><div class="jump2"></div><div class="jump3"></div></div>
+   </div></div>
+  <div class="chat-options">
 <<button "I prefer not to think about it">>
     <<timed 0.3s>>
       <<removeclass "#player" "hide">>
@@ -1349,16 +1388,12 @@ Back to work.
           <<timed 3s>><<goto "game3b">><</timed>>
     <</button>>
     <</replace>><</timed>>
-
-    <</button>>
-</div>
-</main>
-
-<<include "footer">>
+    <</button>></div></div></main><<include "footer">>
 
 
 :: game3b {"position":"600,500","size":"100,100"}
-<<set $passage to "game3b">><<include "header">><main class="game three"><h2> Complete the Chat </h2>
+<<set $passage to "game3b">><<include "header">><main class="game three"><<include "dictionary">>
+<div class="chat-wrapper"><h2> Complete the Chat </h2>
 <div class="chat-container">
 <div class="message game"><p>Have you had any klibi recently?</p></div>
 <div class="message player hide" id="player"></div>
@@ -1541,14 +1576,15 @@ Back to work.
           <</timed>>
 <</button>><</replace>><</timed>>
 <</button>></div>
-
+</div>
 </main>
 
 <<include "footer">>
 
 
 :: game3c {"position":"750,500","size":"100,100"}
-<<set $passage to "game3c">><<include "header">><main class="game three"><h2> Complete the Chat </h2>
+<<set $passage to "game3c">><<include "header">><main class="game three"><<include "dictionary">>
+<div class="chat-wrapper"><h2> Complete the Chat </h2>
 <div class="chat-container">
 <div class="message game"><p>I feel so overwhelmed by waterdox</p></div>
 <div class="message player hide" id="player"></div>
@@ -1630,6 +1666,7 @@ Back to work.
 
     <</button>>
 </div>
+</div>
 </main>
 
 <<include "footer">>
@@ -1652,31 +1689,33 @@ Six months after her life ended, It was this definition that Pope Francis referr
 
 
 </div>
-<<button "Round Four">><<goto "game4a">><</button>></main>
+<<button "Round Four">><<goto "pregame4">><</button>></main>
+
+:: pregame4 {"position":"100,650","size":"100,100"}
+<<set $passage to "pregame4">><<include "header">>
+<main class="pregame" >
+    <p>The key to learning new words is trying them out in different ways
+Your last challenge for today is to try out your new ecolingo
+Let’s see if you can use the words using your voice. 
+</p>
+    <<button "I'm ready">><<goto "game4a">><</button>>
+
+</main>
 
 
 :: game4a {"position":"400,700","size":"100,100"}
-<<set $passage to "game4a">><<include "header">><main class="game four" ><h2> Your challenge </h2>
-<p> Read <<button "this text">>
-          <<replace "#recordItem">><p> A second-year agronomy student at Palestine Technical University Basel Amarna was searching for a direction for his career. Browsing academic publication site he stumbled across hydroponics, a type of horticulture and a subset of hydroculture which involves growing plants without soil, by using water-based mineral nutrient solutions in aqueous solvents. It was a new agricultural technique to him – and, at the time, to Palestine.
-
-“People need food. We have to start growing our own food in our gardens, inside the house, on a rooftop, anywhere.” – Basel Amarna 
-
-“I created this project because of the lack of water resources and agricultural obstacles affecting the whole world,” Basel tells us. “We can create a more sustainable environment by sharing new sustainable agricultural practices as an integrated solution.” 
-
-After years of experimentation and studying, Basel has established himself as one of the forefront Palestinian experts working on hydroponics, having published an academic paper about the technique and soilless culture.
-
-As with any expert pioneering a field of study, Basel’s business journey was wrought with challenges. Palestinian farmers were skeptical of the agricultural alternative, and investors even more so. Explaining the theory of hydroponics to farmers was not working, and so when Basel graduated in 2015, he opened his own farm in order to lead by example. Today it is registered as a private limited company sharing solutions worldwide.
-</p><</replace>><</button>> and record your response using two of the words from your e.co.lingo</p>
-<div class="record-wrapper">
-  <div class="record-item" id="recordItem">
-      </div>
-  <div class="record-item speakpipe"> <iframe src="https://www.speakpipe.com/widget/inline/kp6xzmubni8enwhrhvqo1sx5cbst92iy" allow="microphone" width="100%" height="200" frameborder="0"></iframe>
-    <<button "I have finished my recording">><<goto "story4">><</button>></div>
-
-</div>
-
-
+<<set $passage to "game4a">><<include "header">><main class="game four" ><<include "dictionary">><div class="record-container"><h2> Your challenge </h2><p> Read <<button "this text">>
+              <<replace "#recordItem">><p> A second-year agronomy student at Palestine Technical University Basel Amarna was searching for a direction for his career. Browsing academic publication site he stumbled across hydroponics, a type of horticulture and a subset of hydroculture which involves growing plants without soil, by using water-based mineral nutrient solutions in aqueous solvents. It was a new agricultural technique to him – and, at the time, to Palestine.
+    
+    “People need food. We have to start growing our own food in our gardens, inside the house, on a rooftop, anywhere.” – Basel Amarna 
+    
+    “I created this project because of the lack of water resources and agricultural obstacles affecting the whole world,” Basel tells us. “We can create a more sustainable environment by sharing new sust ainable agricultural practices as an integrated solution.” 
+    
+    After years of experimentation and studying, Basel has established himself as one of the forefront Palestinian experts working on hydroponics, having published an academic paper about the technique and soilless culture.
+    
+    As with any expert pioneering a field of study, Basel’s business journey was wrought with challenges. Palestinian farmers were skeptical of the agricultural alternative, and investors even more so. Explaining the theory of hydroponics to farmers was not working, and so when Basel graduated in 2015, he opened his own farm in order to lead by example. Today it is registered as a private limited company sharing solutions worldwide.
+    </p><</replace>><</button>> and record your response using two of the words from your e.co.lingo</p>
+    <div class="record-wrapper"><div class="record-item" id="recordItem"></div><div class="record-item speakpipe"> <iframe src="https://www.speakpipe.com/widget/inline/kp6xzmubni8enwhrhvqo1sx5cbst92iy" allow="microphone" width="100%" height="200" frameborder="0"></iframe><<button "I have finished my recording">><<goto "story4">><</button>></div></div></div>
 </main>
 <<include "footer">>
 
@@ -1724,13 +1763,17 @@ The power of a word can shape our future.
 <<button "Finish">><<goto "finish">><</button>></main>
 
 
-:: finish {"position":"175,875","size":"100,100"}
-<<set $passage to "finish">>
 
-<main >
 
-<p> goodbye message</p>
+:: finish {"position":"100,650","size":"100,100"}
+<<set $passage to "finish">><<include "header">>
+<main class="pregame" >
+    <p>Thank you for learning with us today
+Tomorrow is another day
+And there our new words to learn
+Keep using the words you have learnt
+We’ll see you soon for more ecolingo. 
+</p>
+    <<button "I'm ready">><<goto "game3a">><</button>>
+
 </main>
-<<include "footer">>
-
-

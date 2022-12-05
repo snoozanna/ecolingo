@@ -306,47 +306,12 @@ margin-inline-end: 10px;
 margin-block-end: 10px
 }
 
-.door-container{
-  display:flex;
-  flex-direction: row;
-justify-content: space-around;
-  align-items:center;
-  text-align: right;
-}
 
-.door-item{
-  display:flex;
-  flex-direction:column
-}
-
-.door-item > button > img {
-  max-width: 7rem
-}
-
-.door-item > span {
-  text-align: center
-}
 
 textarea{
   min-width: 60vw
 }
 
-.wordcontainer{
-  display:flex;
-  flex-direction: row;
-}
-
-.letter-item > input[type=text]{
-    min-width: 2em;
-  	max-width: 2em;
-  	margin-inline-end:10px;
-}
-
-.letter-item > .correct-letter{
-  min-width: 2em;
-  	max-width: 2em;
-  	margin-inline-end:10px;
-}
 
 
 
@@ -403,6 +368,13 @@ button{
   padding: 10px 50px;
   text-transform: uppercase;
   font-weight: 900
+}
+
+/* PREGAME  */
+
+main.pregame{
+  display: flex;
+  justify-content: center;
 }
 
 /* GAME ONE  */
