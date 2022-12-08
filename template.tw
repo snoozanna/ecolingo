@@ -818,10 +818,10 @@ setup.checkForRepeats = (array,element) => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
-<<cacheaudio "story1.mp3" "https://youhavefoundconey.net/ecolingo/assets/audio/story1.mp3">>
-<<cacheaudio "story2.mp3" "https://youhavefoundconey.net/ecolingo/assets/audio/story2.mp3">>
-<<cacheaudio "story3.mp3" "https://youhavefoundconey.net/ecolingo/assets/audio/story3.mp3">>
-<<cacheaudio "story4.mp3" "https://youhavefoundconey.net/ecolingo/assets/audio/story4.mp3">>
+<<cacheaudio "story1" "https://youhavefoundconey.net/ecolingo/assets/audio/story1.mp3">>
+<<cacheaudio "story2" "https://youhavefoundconey.net/ecolingo/assets/audio/story2.mp3">>
+<<cacheaudio "story3" "https://youhavefoundconey.net/ecolingo/assets/audio/story3.mp3">>
+<<cacheaudio "story4" "https://youhavefoundconey.net/ecolingo/assets/audio/story4.mp3">>
 <<waitforaudio>> 
 <<set $pagetitle to "Round 1">>
 <<set $roundone to false>>
